@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Program {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  duration    String
+  students    String
+  rating      Float
+  badge       String?
+  image       String?
+  category    String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Certificate {
+  id            String   @id @default(uuid())
+  certificateId String   @unique
+  holderName    String
+  email         String
+  programTitle  String
+  issueDate     DateTime
+  isValid       Boolean  @default(true)
+  createdAt     DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  fullName  String
+  email     String
+  phone     String
+  city      String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model CorporateInquiry {
+  id                  String   @id @default(uuid())
+  companyName         String
+  contactPerson       String
+  workEmail           String
+  partnershipInterest String
+  message             String?
+  isRead              Boolean  @default(false)
+  createdAt           DateTime @default(now())
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+}
