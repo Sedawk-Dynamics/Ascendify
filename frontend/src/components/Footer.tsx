@@ -12,10 +12,10 @@ const quickLinks = [
 
 const resources = [
   { href: "/verify", label: "Verify Certificate" },
-  { href: "#", label: "Blog" },
-  { href: "#", label: "Careers" },
-  { href: "#", label: "Privacy Policy" },
-  { href: "#", label: "Terms of Service" },
+  { href: "/blog", label: "Blog" },
+  { href: "/hire-from-us", label: "Hire from Us" },
+  { href: "/job-board", label: "Job Board" },
+  { href: "/case-studies", label: "Case Studies" },
 ];
 
 export default function Footer() {

@@ -11,6 +11,10 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/cohorts", label: "Our Cohorts" },
   { href: "/corporate", label: "Corporate Connect" },
+  { href: "/hire-from-us", label: "Hire from Us" },
+  { href: "/job-board", label: "Job Board" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/blog", label: "Blog" },
   { href: "/verify", label: "Verify Certificate" },
 ];
 
@@ -45,13 +49,13 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Desktop nav links + Contact button (right side) */}
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-indigo ${
+                className={`text-[13px] font-medium transition-colors duration-200 hover:text-indigo whitespace-nowrap ${
                   pathname === link.href
                     ? "text-navy font-bold"
                     : "text-text-muted"
@@ -60,13 +64,9 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-          </div>
-
-          {/* Contact button */}
-          <div className="hidden lg:block">
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-2.5 rounded-lg text-white text-sm font-semibold gradient-primary hover:opacity-90 transition-all duration-300"
+              className="inline-flex items-center px-5 py-2.5 rounded-lg text-white text-[13px] font-semibold gradient-primary hover:opacity-90 transition-all duration-300 whitespace-nowrap"
             >
               Contact Us
             </Link>

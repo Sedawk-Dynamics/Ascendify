@@ -147,179 +147,9 @@ function StudentSlider() {
   );
 }
 
-// --- Alumni Showcase ---
 
-function AlumniShowcase() {
-  return (
-    <div className="mt-20 relative">
-      <div className="max-w-5xl mx-auto">
-        <div className="relative flex items-center justify-center min-h-[520px]">
-          {/* Purple circle with person */}
-          <div className="relative" style={{ width: 400, height: 400 }}>
-            {/* Outer border circle */}
-            <div
-              className="absolute border-2 border-indigo/20"
-              style={{
-                width: 416,
-                height: 416,
-                borderRadius: "30%",
-                top: -8,
-                left: -8,
-              }}
-            />
-            {/* Purple filled circle */}
-            <div
-              className="bg-gradient-to-b from-purple-500 to-indigo"
-              style={{
-                width: 400,
-                height: 400,
-                borderRadius: "30%",
-                overflow: "hidden",
-                position: "relative",
-              }}
-            >
-              {/* Person image fully visible inside circle */}
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop&crop=face"
-                alt="Professional Alumni"
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-          </div>
 
-          {/* Floating card - Countries */}
-          <div className="absolute top-4 left-4 md:left-50 md:top-6 bg-white rounded-2xl shadow-xl p-5 border border-gray-100 max-w-[180px]">
-            <p className="text-text-muted text-xs mb-1">clients across</p>
-            <p className="text-4xl font-bold text-text-heading">
-              8+{" "}
-              <span className="text-base font-semibold text-text-muted">
-                Countries
-              </span>
-            </p>
-          </div>
 
-          {/* Floating card - Alumni */}
-          <div className="absolute bottom-0 left-0 md:left-40  bg-white rounded-2xl shadow-xl p-5 border border-gray-100 max-w-[220px]">
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-text-muted text-xs">Over</p>
-              <GraduationCap size={18} className="text-indigo" />
-            </div>
-            <p className="text-4xl font-bold text-text-heading">
-              10,000+{" "}
-              <span className="text-base font-semibold text-text-muted">
-                Alumni&apos;s
-              </span>
-            </p>
-            <p className="text-xs text-text-muted mt-2 leading-relaxed">
-              Proven track record of producing industry-ready professionals.
-            </p>
-          </div>
-
-          {/* Floating card - Testimonial Slider */}
-          <AlumniTestimonialSlider />
-
-          {/* Dashboard decorative element */}
-          <div className="absolute top-0 right-16 w-32 h-24 bg-white/80 rounded-xl shadow-md border border-gray-100 hidden md:flex items-center justify-center">
-            <div className="space-y-2 w-full px-3">
-              <div className="h-1.5 bg-indigo/20 rounded-full w-full" />
-              <div className="h-1.5 bg-cyan/20 rounded-full w-3/4" />
-              <div className="h-1.5 bg-indigo/20 rounded-full w-1/2" />
-              <div className="flex gap-1 mt-2">
-                <div className="w-3 h-6 bg-indigo/30 rounded-sm" />
-                <div className="w-3 h-8 bg-cyan/30 rounded-sm" />
-                <div className="w-3 h-5 bg-indigo/30 rounded-sm" />
-                <div className="w-3 h-7 bg-cyan/30 rounded-sm" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Our Alumni work at */}
-        <div className="text-center mt-8">
-          <h3 className="text-2xl font-bold text-text-heading italic">
-            Our Alumni work at
-          </h3>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// --- Alumni Testimonial Slider (floating card) ---
-
-function AlumniTestimonialSlider() {
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIdx((prev) => (prev + 1) % testimonials.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="absolute top-[160px] right-0 md:right-18 bg-white rounded-2xl shadow-xl border border-gray-100 w-[280px] overflow-hidden">
-      <div className="relative h-[180px]">
-        {testimonials.map((t, i) => (
-          <div
-            key={i}
-            className="absolute inset-0 p-5 transition-all duration-700 ease-in-out"
-            style={{
-              transform: `translateX(${((i - idx + testimonials.length) % testimonials.length) * 100 - ((i - idx + testimonials.length) % testimonials.length > testimonials.length / 2 ? testimonials.length * 100 : 0)}%)`,
-              opacity: i === idx ? 1 : 0,
-            }}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover shrink-0" />
-              <div>
-                <p className="font-bold text-sm text-text-heading">{t.name}</p>
-                <p className="text-xs text-text-muted">{t.role}</p>
-                <div className="flex items-center gap-1 mt-0.5">
-                  <span className="text-xs font-semibold">{t.rating}</span>
-                  <div className="flex">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <Star
-                        key={j}
-                        size={10}
-                        className={
-                          j < Math.floor(t.rating)
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-gray-200"
-                        }
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className="text-xs text-text-muted-alt leading-relaxed line-clamp-4">
-              {t.text}
-            </p>
-          </div>
-        ))}
-      </div>
-      {/* Dots + Progress */}
-      <div className="px-5 pb-3 flex items-center justify-center gap-1.5">
-        {testimonials.map((_, i) => (
-          <span
-            key={i}
-            className={`block h-1.5 rounded-full transition-all duration-500 ${
-              i === idx ? "w-5 gradient-primary" : "w-1.5 bg-gray-200"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 // --- Testimonial Slider ---
 
@@ -683,88 +513,120 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan rounded-full blur-3xl" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10">
-          <div className="max-w-4xl">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Build a Career in{" "}
-              <span className="text-cyan">
-                Finance &amp; Strategic Consulting
-              </span>{" "}
-              — Not Just a Degree
-            </h1>
-            <p className="text-lg text-text-on-dark leading-relaxed mb-8 max-w-3xl">
-              Master Financial Modeling, Equity Research, Valuation, Investment
-              Banking &amp; Management Consulting Skills with Industry-Led Live
-              Cohorts designed for real-world roles.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+                Build a Career in{" "}
+                <span className="text-cyan">
+                  Finance &amp; Strategic Consulting
+                </span>{" "}
+                — Not Just a Degree
+              </h1>
+              <p className="text-lg text-text-on-dark leading-relaxed mb-8">
+                Master Financial Modeling, Equity Research, Valuation, Investment
+                Banking &amp; Management Consulting Skills with Industry-Led Live
+                Cohorts designed for real-world roles.
+              </p>
 
-            {/* World Map Stats */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8 max-w-3xl">
-              <div className="flex items-center gap-2 mb-4">
-                <Globe size={20} className="text-cyan" />
-                <span className="text-sm text-text-on-dark">
-                  Students across the world
-                </span>
+              {/* World Map Stats */}
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <Globe size={20} className="text-cyan" />
+                  <span className="text-sm text-text-on-dark">
+                    Students across the world
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
+                      <Globe size={18} className="text-cyan" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">3+</p>
+                      <p className="text-xs text-text-on-dark">Countries</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
+                      <BookOpen size={18} className="text-cyan" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">6+</p>
+                      <p className="text-xs text-text-on-dark">
+                        Upskilling Courses
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
+                      <Building2 size={18} className="text-cyan" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">3+</p>
+                      <p className="text-xs text-text-on-dark">
+                        Top Colleges (Incl. IIM)
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
-                    <Globe size={18} className="text-cyan" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-lg">3+</p>
-                    <p className="text-xs text-text-on-dark">Countries</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
-                    <BookOpen size={18} className="text-cyan" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-lg">6+</p>
-                    <p className="text-xs text-text-on-dark">
-                      Upskilling Courses
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
-                    <Building2 size={18} className="text-cyan" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-lg">3+</p>
-                    <p className="text-xs text-text-on-dark">
-                      Top Colleges (Incl. IIM)
-                    </p>
-                  </div>
-                </div>
+
+              {/* Success tagline */}
+              <p className="text-lg font-semibold text-white mb-6">
+                Your Success measures Our Success
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => setShowContactForm(true)}
+                  className="inline-flex items-center px-8 py-3 rounded-lg text-white font-semibold gradient-primary hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-indigo/30 cursor-pointer"
+                >
+                  Talk with our team
+                </button>
+                <a
+                  href="/cohorts"
+                  className="inline-flex items-center px-8 py-3 rounded-lg font-semibold border-2 border-cyan text-cyan hover:bg-cyan hover:text-white transition-all duration-300 cursor-pointer"
+                >
+                  Explore Courses
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center px-8 py-3 rounded-lg font-semibold border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                >
+                  Join free Workshops
+                </a>
               </div>
             </div>
 
-            {/* Success tagline */}
-            <p className="text-lg font-semibold text-white mb-6">
-              Your Success measures Our Success
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => setShowContactForm(true)}
-                className="inline-flex items-center px-8 py-3 rounded-lg text-white font-semibold gradient-primary hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-indigo/30 cursor-pointer"
-              >
-                Talk with our team
-              </button>
-              <a
-                href="/cohorts"
-                className="inline-flex items-center px-8 py-3 rounded-lg font-semibold border-2 border-cyan text-cyan hover:bg-cyan hover:text-white transition-all duration-300 cursor-pointer"
-              >
-                Explore Courses
-              </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center px-8 py-3 rounded-lg font-semibold border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
-              >
-                Join free Workshops
-              </a>
+            {/* Right side - Financial hub skyline */}
+            <div className="hidden lg:flex flex-col gap-4">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&h=400&fit=crop"
+                  alt="Hong Kong financial district skyline"
+                  className="w-full h-[300px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 to-transparent" />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&h=300&fit=crop"
+                    alt="Dubai financial skyline"
+                    className="w-full h-[220px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=400&h=300&fit=crop"
+                    alt="Shanghai financial district"
+                    className="w-full h-[220px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 to-transparent" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -832,10 +694,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Alumni Showcase Section */}
-          <AlumniShowcase />
+
         </div>
       </section>
+
+      
     </>
   );
 }

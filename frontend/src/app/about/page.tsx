@@ -66,11 +66,13 @@ export default function AboutPage() {
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
-            {/* Image placeholder */}
+            {/* Image */}
             <div className="relative">
-              <div className="w-full aspect-[4/3] rounded-2xl gradient-primary opacity-90 flex items-center justify-center">
-                <Rocket size={80} className="text-white/30" />
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&h=500&fit=crop"
+                alt="Team collaborating on career education"
+                className="w-full aspect-[4/3] rounded-2xl object-cover shadow-lg"
+              />
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-cyan/20 rounded-2xl -z-10" />
             </div>
 
@@ -143,35 +145,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-text-heading mb-4">
-              Meet Our <span className="gradient-text">Team</span>
-            </h2>
-            <p className="text-text-muted max-w-2xl mx-auto">
-              The passionate individuals behind Ascendify&apos;s success.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, i) => (
-              <div
-                key={i}
-                className="text-center bg-light-bg rounded-xl p-8 hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="w-20 h-20 rounded-full gradient-primary flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  {member.initials}
-                </div>
-                <h3 className="font-semibold text-lg text-text-heading">
-                  {member.name}
-                </h3>
-                <p className="text-text-muted text-sm mt-1">{member.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
     </>
   );
 }
