@@ -704,27 +704,54 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-white py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="gradient-primary rounded-3xl p-12 lg:p-16 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full blur-3xl" />
-            </div>
-            <div className="relative z-10">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Ready to Build Your Finance Career?
+      <section className="gradient-hero py-24 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-cyan/15 rounded-full blur-3xl" />
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-4">
+                Ready to Build Your{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal-300">Finance Career</span>?
               </h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Join the next cohort and get mentored by top industry professionals. Limited seats available.
+              <p className="text-text-on-dark text-lg leading-relaxed mb-8">
+                Join the next cohort and get mentored by top industry professionals. Limited seats available — start your journey today.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-wrap gap-4">
                 <a
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border-2 border-white/40 text-white font-semibold hover:bg-white/10 transition-all cursor-pointer"
+                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-cyan text-navy-dark font-bold hover:bg-teal-300 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan/30 cursor-pointer"
                 >
                   Talk to Us
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </a>
+                <a
+                  href="/cohorts"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-white/20 text-white font-semibold hover:bg-white/10 transition-all cursor-pointer"
+                >
+                  View Cohorts
+                </a>
+              </div>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+                <p className="text-3xl font-bold text-white mb-1">100+</p>
+                <p className="text-sm text-text-on-dark">Students Placed</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+                <p className="text-3xl font-bold text-white mb-1">5+</p>
+                <p className="text-sm text-text-on-dark">Industry Partners</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+                <p className="text-3xl font-bold text-white mb-1">4.8</p>
+                <p className="text-sm text-text-on-dark">Avg. Rating</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+                <p className="text-3xl font-bold text-white mb-1">95%</p>
+                <p className="text-sm text-text-on-dark">Completion Rate</p>
               </div>
             </div>
           </div>
