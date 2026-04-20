@@ -35,35 +35,40 @@ const testimonials = [
     role: "Student TVS",
     text: "This cohort changed my perspective on finance. I rated myself 0 in Excel and PPT, but through live classes and report-making, I built confidence. Case studies and discussions on news and markets made learning practical. These skills will stay with me for life.",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face",
   },
   {
     name: "Bhaskar Pintu Pal",
     role: "Student TVS",
     text: "This cohort shaped my future. Parth Sir's simple yet powerful teaching gave me finance knowledge, business insights, and life advice. He guided us like a big brother. Report-making, market discussions, and the learning community created here are invaluable. This is more than a course — it's family.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
   },
   {
     name: "Kamini Rathore",
     role: "FMBV 7 Batch",
     text: "Journey in Finocontrol is good exciting learning. Joining Finocontrol is really inspiring motivating and learning new skills. Faculty in Finocontrol is good and helpful.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
   },
   {
     name: "Rinky",
     role: "FMBV 7 Batch",
     text: "Finocontrol has been great, actually learned what value a financial model can add to your work and how to actually mould yourself according to your work role in the corporate.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
   },
   {
     name: "Kamini Rathore",
     role: "V 9 Batch",
     text: "Training by finocontrol turned out to be a direct investment in my future. The sessions were amazing.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face",
   },
 ];
 
@@ -147,10 +152,6 @@ function StudentSlider() {
   );
 }
 
-
-
-
-
 // --- Testimonial Slider ---
 
 function TestimonialSlider() {
@@ -191,7 +192,11 @@ function TestimonialSlider() {
                 &ldquo;{t.text}&rdquo;
               </p>
               <div className="flex items-center gap-3 border-t border-gray-100 pt-5">
-                <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
                 <div>
                   <p className="font-semibold text-text-heading">{t.name}</p>
                   <p className="text-sm text-text-muted">{t.role}</p>
@@ -459,7 +464,7 @@ function ContactFormModal({
             </div>
 
             {/* What describes you well */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <label className="block text-sm font-medium text-text-heading mb-2">
                 What describes you well?
               </label>
@@ -469,7 +474,7 @@ function ContactFormModal({
                   <span className="text-sm text-text-muted-alt">{option}</span>
                 </label>
               ))}
-            </div>
+            </div> */}
 
             <div className="flex gap-3">
               <button
@@ -523,9 +528,11 @@ export default function Home() {
                 — Not Just a Degree
               </h1>
               <p className="text-lg text-text-on-dark leading-relaxed mb-8">
-                Master Financial Modeling, Equity Research, Valuation, Investment
-                Banking &amp; Management Consulting Skills with Industry-Led Live
-                Cohorts designed for real-world roles.
+                A structured, industry-led cohort program designed to help you
+                master financial modeling, valuation, equity research, and crack
+                real interviews. Built by experienced indutry professionals for
+                future finance professional | Trusted by students from IIMs &
+                top colleges
               </p>
 
               {/* World Map Stats */}
@@ -551,7 +558,7 @@ export default function Home() {
                       <BookOpen size={18} className="text-cyan" />
                     </div>
                     <div>
-                      <p className="font-bold text-lg">6+</p>
+                      <p className="font-bold text-lg">5+</p>
                       <p className="text-xs text-text-on-dark">
                         Upskilling Courses
                       </p>
@@ -562,7 +569,7 @@ export default function Home() {
                       <Building2 size={18} className="text-cyan" />
                     </div>
                     <div>
-                      <p className="font-bold text-lg">3+</p>
+                      <p className="font-bold text-lg">5+</p>
                       <p className="text-xs text-text-on-dark">
                         Top Colleges (Incl. IIM)
                       </p>
@@ -573,7 +580,8 @@ export default function Home() {
 
               {/* Success tagline */}
               <p className="text-lg font-semibold text-white mb-6">
-                Your Success measures Our Success
+                This is Not Just a workshop. It’s Your Entry into Core Finance
+                Roles.
               </p>
 
               {/* CTA Buttons */}
@@ -582,13 +590,13 @@ export default function Home() {
                   onClick={() => setShowContactForm(true)}
                   className="inline-flex items-center px-8 py-3 rounded-lg text-white font-semibold gradient-primary hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-indigo/30 cursor-pointer"
                 >
-                  Talk with our team
+                  Download Curriculum
                 </button>
                 <a
                   href="/cohorts"
                   className="inline-flex items-center px-8 py-3 rounded-lg font-semibold border-2 border-cyan text-cyan hover:bg-cyan hover:text-white transition-all duration-300 cursor-pointer"
                 >
-                  Explore Courses
+                  Upcoming Cohort
                 </a>
                 <a
                   href="/contact"
@@ -693,12 +701,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-
-
         </div>
       </section>
-
-      
     </>
   );
 }
