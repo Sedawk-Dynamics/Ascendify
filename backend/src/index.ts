@@ -10,6 +10,8 @@ import certificateRoutes from "./routes/certificate";
 import contactRoutes from "./routes/contact";
 import corporateRoutes from "./routes/corporate";
 import authRoutes from "./routes/auth";
+import jobRoutes from "./routes/job";
+import blogRoutes from "./routes/blog";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -32,6 +34,8 @@ app.use("/api/certificates", certificateRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/corporate", corporateRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/jobs", jobRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // Health check
 app.get("/api/health", (_req, res) => {

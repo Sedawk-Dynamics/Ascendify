@@ -6,73 +6,33 @@ import {
   Building2,
   ExternalLink,
   Search,
+  Loader2,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const jobs = [
-  {
-    title: "Financial Analyst",
-    company: "KPMG",
-    type: "Full-time",
-    location: "Mumbai, India",
-    url: "#",
-  },
-  {
-    title: "Investment Banking Associate",
-    company: "Ladderup",
-    type: "Full-time",
-    location: "Bangalore, India",
-    url: "#",
-  },
-  {
-    title: "Equity Research Intern",
-    company: "Evalueserve",
-    type: "Internship",
-    location: "Gurgaon, India",
-    url: "#",
-  },
-  {
-    title: "Risk Analyst",
-    company: "Northern Trust",
-    type: "Full-time",
-    location: "Pune, India",
-    url: "#",
-  },
-  {
-    title: "Corporate Finance Associate",
-    company: "PwC",
-    type: "Full-time",
-    location: "Delhi, India",
-    url: "#",
-  },
-  {
-    title: "Wealth Management Trainee",
-    company: "Acuity Knowledge Partners",
-    type: "Part-time",
-    location: "Mumbai, India",
-    url: "#",
-  },
-  {
-    title: "Financial Modelling Analyst",
-    company: "CIEL HR",
-    type: "Full-time",
-    location: "Hyderabad, India",
-    url: "#",
-  },
-  {
-    title: "M&A Research Intern",
-    company: "Deloitte",
-    type: "Internship",
-    location: "Bangalore, India",
-    url: "#",
-  },
-];
+interface Job {
+  id: string;
+  title: string;
+  company: string;
+  type: string;
+  location: string;
+  url: string;
+}
 
 const jobTypes = ["All", "Full-time", "Part-time", "Internship"];
 
 export default function JobBoardPage() {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("All");
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch("/_/backend/api/jobs")
+      .then((res) => res.json())
+      .then((data) => { setJobs(data); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, []);
 
   const filtered = jobs.filter((job) => {
     const matchType = filter === "All" || job.type === filter;
@@ -141,8 +101,13 @@ export default function JobBoardPage() {
             </div>
           </div>
 
-          {/* Job Cards */}
-          {filtered.length === 0 ? (
+          {/* Loading */}
+          {loading ? (
+            <div className="text-center py-16">
+              <Loader2 size={32} className="animate-spin text-indigo mx-auto mb-4" />
+              <p className="text-text-muted">Loading jobs...</p>
+            </div>
+          ) : filtered.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-text-muted text-lg">
                 No jobs found matching your criteria.
@@ -150,9 +115,9 @@ export default function JobBoardPage() {
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((job, i) => (
+              {filtered.map((job) => (
                 <div
-                  key={i}
+                  key={job.id}
                   className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                   <h3 className="text-lg font-bold text-text-heading mb-3">

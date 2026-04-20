@@ -1,6 +1,6 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { HiOutlineHome, HiOutlineAcademicCap, HiOutlineDocumentCheck, HiOutlineChatBubbleLeft, HiOutlineBuildingOffice2, HiArrowRightOnRectangle } from 'react-icons/hi2';
+import { HiOutlineHome, HiOutlineAcademicCap, HiOutlineDocumentCheck, HiOutlineChatBubbleLeft, HiOutlineBuildingOffice2, HiOutlineBriefcase, HiOutlinePencilSquare, HiArrowRightOnRectangle } from 'react-icons/hi2';
 
 const navItems = [
   { to: '/', icon: HiOutlineHome, label: 'Dashboard', end: true },
@@ -8,6 +8,8 @@ const navItems = [
   { to: '/certificates', icon: HiOutlineDocumentCheck, label: 'Certificates' },
   { to: '/contacts', icon: HiOutlineChatBubbleLeft, label: 'Contacts' },
   { to: '/corporate', icon: HiOutlineBuildingOffice2, label: 'Corporate' },
+  { to: '/jobs', icon: HiOutlineBriefcase, label: 'Job Board' },
+  { to: '/blogs', icon: HiOutlinePencilSquare, label: 'Blogs' },
 ];
 
 export default function Layout() {

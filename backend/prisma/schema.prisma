@@ -66,3 +66,29 @@ model Admin {
   name      String
   createdAt DateTime @default(now())
 }
+
+model Job {
+  id        String   @id @default(uuid())
+  title     String
+  company   String
+  type      String
+  location  String
+  url       String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blog {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String
+  excerpt     String
+  author      String
+  coverImage  String?
+  category    String
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

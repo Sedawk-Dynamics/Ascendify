@@ -8,6 +8,8 @@ import Programs from './pages/Programs';
 import Certificates from './pages/Certificates';
 import Contacts from './pages/Contacts';
 import Corporate from './pages/Corporate';
+import Jobs from './pages/Jobs';
+import Blogs from './pages/Blogs';
 import './index.css';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -30,6 +32,8 @@ function AppRoutes() {
         <Route path="certificates" element={<Certificates />} />
         <Route path="contacts" element={<Contacts />} />
         <Route path="corporate" element={<Corporate />} />
+        <Route path="jobs" element={<Jobs />} />
+        <Route path="blogs" element={<Blogs />} />
       </Route>
     </Routes>
   );

@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { prisma } from "../lib/prisma";
 import { authMiddleware } from "../middleware/auth";
+import { sendAdminNotification } from "../lib/mailer";
 
 const router = Router();
 
@@ -17,6 +18,16 @@ router.post("/", async (req: Request, res: Response) => {
     const inquiry = await prisma.corporateInquiry.create({
       data: { companyName, contactPerson, workEmail, partnershipInterest, message },
     });
+
+    sendAdminNotification(
+      `New Corporate Inquiry from ${companyName}`,
+      `<h3>New Corporate Inquiry</h3>
+       <p><strong>Company:</strong> ${companyName}</p>
+       <p><strong>Contact:</strong> ${contactPerson}</p>
+       <p><strong>Email:</strong> ${workEmail}</p>
+       <p><strong>Interest:</strong> ${partnershipInterest}</p>
+       <p><strong>Message:</strong> ${message || "N/A"}</p>`
+    ).catch((err) => console.error("Email send failed:", err));
 
     res.status(201).json({ message: "Inquiry submitted successfully.", id: inquiry.id });
   } catch (error) {

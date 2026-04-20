@@ -47,4 +47,16 @@ export const api = {
   getCorporate: () => request<any[]>('/corporate'),
   markCorporateRead: (id: string) => request(`/corporate/${id}/read`, { method: 'PUT' }),
   deleteCorporate: (id: string) => request(`/corporate/${id}`, { method: 'DELETE' }),
+
+  // Jobs
+  getJobs: () => request<any[]>('/jobs/all'),
+  createJob: (data: any) => request('/jobs', { method: 'POST', body: JSON.stringify(data) }),
+  updateJob: (id: string, data: any) => request(`/jobs/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  deleteJob: (id: string) => request(`/jobs/${id}`, { method: 'DELETE' }),
+
+  // Blogs
+  getBlogs: () => request<any[]>('/blogs/admin/all'),
+  createBlog: (data: any) => request('/blogs', { method: 'POST', body: JSON.stringify(data) }),
+  updateBlog: (id: string, data: any) => request(`/blogs/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  deleteBlog: (id: string) => request(`/blogs/${id}`, { method: 'DELETE' }),
 };
