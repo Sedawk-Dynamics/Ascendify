@@ -94,25 +94,26 @@ async function main() {
   // Create sample certificates
   const certificates = [
     {
-      certificateId: "ASC-2026-00001",
-      holderName: "Rahul Sharma",
-      email: "rahul.sharma@example.com",
-      programTitle: "Data Science & Analytics",
-      issueDate: new Date("2026-03-15"),
+      certificateId: "ASC202673157",
+      holderName: "Aarav Kumar Anand",
+      email: "aarav.anand@example.com",
+      college: "IIM SIRMAUR",
+      birthDate: "20/06/2000",
+      batch: "FIN MODLEING APR26",
+      programTitle: "Financial Modeling",
+      issueDate: new Date("2026-04-20"),
+      certificateHostUrl: "https://bgtfventures-my.sharepoint.com/:b:/g/personal/bishal_agarwal_bgtf_in/IQDsVqhWOU_qQoPGZ8UVl5D7AZhut-q-jiPLv3I8-doIKeU?e=cu8ReB",
     },
     {
-      certificateId: "ASC-2026-00002",
-      holderName: "Priya Patel",
-      email: "priya.patel@example.com",
-      programTitle: "FinTech & Banking",
-      issueDate: new Date("2026-03-20"),
-    },
-    {
-      certificateId: "ASC-2026-00003",
-      holderName: "Amit Kumar",
-      email: "amit.kumar@example.com",
-      programTitle: "Digital Marketing",
-      issueDate: new Date("2026-04-01"),
+      certificateId: "ASC202618256",
+      holderName: "HIMANSHU GARG",
+      email: "himanshu.garg@example.com",
+      college: "IIM SIRMAUR",
+      birthDate: "17/01/2003",
+      batch: "FIN MODLEING APR26",
+      programTitle: "Financial Modeling",
+      issueDate: new Date("2026-04-20"),
+      certificateHostUrl: "https://bgtfventures-my.sharepoint.com/:b:/g/personal/bishal_agarwal_bgtf_in/IQArUAhdRB_HRaXEJdKMUspbAST-0B2ISLq6LDD2JPbYbTo?e=Rgi1TU",
     },
   ];
 

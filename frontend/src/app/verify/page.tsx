@@ -13,6 +13,9 @@ import {
   BookOpen,
   Calendar,
   BadgeCheck,
+  GraduationCap,
+  Layers,
+  ExternalLink,
 } from "lucide-react";
 
 interface CertificateData {
@@ -25,6 +28,10 @@ interface CertificateData {
   validity?: string;
   status?: string;
   certificateId?: string;
+  college?: string;
+  birthDate?: string;
+  batch?: string;
+  certificateHostUrl?: string;
 }
 
 const steps = [
@@ -144,6 +151,32 @@ export default function VerifyPage() {
                       </p>
                     </div>
                   </div>
+                  {certificate.college && (
+                    <div className="flex items-start gap-3">
+                      <GraduationCap size={16} className="text-green-600 mt-0.5" />
+                      <div>
+                        <p className="text-xs text-green-600 font-medium">
+                          College
+                        </p>
+                        <p className="text-sm text-green-900 font-semibold">
+                          {certificate.college}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                  {certificate.batch && (
+                    <div className="flex items-start gap-3">
+                      <Layers size={16} className="text-green-600 mt-0.5" />
+                      <div>
+                        <p className="text-xs text-green-600 font-medium">
+                          Batch
+                        </p>
+                        <p className="text-sm text-green-900 font-semibold">
+                          {certificate.batch}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                   <div className="flex items-start gap-3">
                     <BookOpen size={16} className="text-green-600 mt-0.5" />
                     <div>
@@ -174,14 +207,27 @@ export default function VerifyPage() {
                     <ShieldCheck size={16} className="text-green-600 mt-0.5" />
                     <div>
                       <p className="text-xs text-green-600 font-medium">
-                        Validity
+                        Certificate Credential
                       </p>
                       <p className="text-sm text-green-900 font-semibold">
-                        {certificate.validity || certificate.status || "Valid"}
+                        {certificate.certificateId || "N/A"}
                       </p>
                     </div>
                   </div>
                 </div>
+                {certificate.certificateHostUrl && (
+                  <div className="mt-4 pt-4 border-t border-green-200">
+                    <a
+                      href={certificate.certificateHostUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 text-white text-sm font-semibold hover:bg-green-700 transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      View Certificate
+                    </a>
+                  </div>
+                )}
               </div>
             )}
 

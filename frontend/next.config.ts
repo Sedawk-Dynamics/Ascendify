@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/_/backend/:path*",
+        destination: "http://localhost:5001/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

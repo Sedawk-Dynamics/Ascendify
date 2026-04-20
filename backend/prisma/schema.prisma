@@ -23,14 +23,18 @@ model Program {
 }
 
 model Certificate {
-  id            String   @id @default(uuid())
-  certificateId String   @unique
-  holderName    String
-  email         String
-  programTitle  String
-  issueDate     DateTime
-  isValid       Boolean  @default(true)
-  createdAt     DateTime @default(now())
+  id                 String   @id @default(uuid())
+  certificateId      String   @unique
+  holderName         String
+  email              String
+  college            String?
+  birthDate          String?
+  batch              String?
+  programTitle       String
+  issueDate          DateTime
+  certificateHostUrl String?
+  isValid            Boolean  @default(true)
+  createdAt          DateTime @default(now())
 }
 
 model ContactMessage {

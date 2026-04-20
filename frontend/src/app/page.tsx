@@ -16,17 +16,53 @@ import {
   FileText,
   TrendingUp,
   Quote,
+  Play,
+  Award,
+  BarChart3,
+  Zap,
+  ChevronRight,
 } from "lucide-react";
 
 // --- Data ---
 
 const whyAscendify = [
-  "Learn directly from Investment Banking, Corporate Finance & Strategic Consulting professionals",
-  "Hands-on case studies & real company modeling",
-  "Interview-focused training (not theoretical learning)",
-  "Structured cohort-based learning with accountability",
-  "Designed for MBA, BBA, BCom, CFA & Economics students",
-  "Customized workforce training program under corporate connect to train your corporate employees with relevant industry finance & strategy skills",
+  {
+    icon: Users,
+    title: "Industry Experts",
+    text: "Learn directly from Investment Banking, Corporate Finance & Strategic Consulting professionals",
+  },
+  {
+    icon: BarChart3,
+    title: "Real Case Studies",
+    text: "Hands-on case studies & real company modeling",
+  },
+  {
+    icon: Target,
+    title: "Interview-Focused",
+    text: "Interview-focused training (not theoretical learning)",
+  },
+  {
+    icon: GraduationCap,
+    title: "Cohort Learning",
+    text: "Structured cohort-based learning with accountability",
+  },
+  {
+    icon: Award,
+    title: "For All Backgrounds",
+    text: "Designed for MBA, BBA, BCom, CFA & Economics students",
+  },
+  {
+    icon: Building2,
+    title: "Corporate Connect",
+    text: "Customized workforce training program under corporate connect to train your corporate employees with relevant industry finance, technical tools & AI skills",
+  },
+];
+
+const stats = [
+  { value: "3+", label: "Countries", icon: Globe },
+  { value: "5+", label: "Upskilling Courses", icon: BookOpen },
+  { value: "5+", label: "Top Colleges (Incl. IIM)", icon: Building2 },
+  { value: "100+", label: "Students Trained", icon: Users },
 ];
 
 const testimonials = [
@@ -72,34 +108,6 @@ const testimonials = [
   },
 ];
 
-const studentPhotos = [
-  {
-    name: "Harshil",
-    image:
-      "https://images.unsplash.com/photo-1616728558188-101a6d4d0338?w=400&h=500&fit=crop",
-  },
-  {
-    name: "Prannjal",
-    image:
-      "https://images.unsplash.com/photo-1726660194879-401a012b1ee3?w=400&h=500&fit=crop",
-  },
-  {
-    name: "Ashish",
-    image:
-      "https://images.unsplash.com/photo-1698072556534-40ec6e337311?w=400&h=500&fit=crop",
-  },
-  {
-    name: "Sahil",
-    image:
-      "https://images.unsplash.com/photo-1653379673133-cb7ea2197a63?w=400&h=500&fit=crop",
-  },
-  {
-    name: "Rinky",
-    image:
-      "https://images.unsplash.com/photo-1653379673174-f8a9138a39b0?w=400&h=500&fit=crop",
-  },
-];
-
 const partnerLogos = [
   "WADI Services",
   "PhilipCapital",
@@ -108,46 +116,67 @@ const partnerLogos = [
   "VERITY",
 ];
 
-// --- Student Slider ---
+const jobProfiles = [
+  {
+    icon: FileText,
+    title: "Resume Building",
+    text: "Craft finance-ready resumes that stand out to recruiters",
+    color: "from-indigo to-purple-500",
+  },
+  {
+    icon: Target,
+    title: "Interview Prep",
+    text: "Technical & behavioral interview training with real case studies",
+    color: "from-cyan to-teal-400",
+  },
+  {
+    icon: Briefcase,
+    title: "Job Placement",
+    text: "Direct connections with hiring partners in finance & consulting",
+    color: "from-indigo to-cyan",
+  },
+  {
+    icon: TrendingUp,
+    title: "Career Growth",
+    text: "Ongoing mentorship & networking for long-term career success",
+    color: "from-purple-500 to-indigo",
+  },
+];
 
-function StudentSlider() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+// --- Animated Counter ---
+
+function AnimatedCounter({ value, suffix = "" }: { value: string; suffix?: string }) {
+  const num = parseInt(value);
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
 
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    let pos = 0;
-    const speed = 1;
-    const animate = () => {
-      pos += speed;
-      if (pos >= el.scrollWidth / 2) pos = 0;
-      el.scrollLeft = pos;
-      requestAnimationFrame(animate);
-    };
-    const id = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(id);
-  }, []);
-
-  const items = [...studentPhotos, ...studentPhotos];
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          let current = 0;
+          const increment = Math.max(1, Math.floor(num / 40));
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= num) {
+              current = num;
+              clearInterval(timer);
+            }
+            setCount(current);
+          }, 30);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [num]);
 
   return (
-    <div className="mt-16 overflow-hidden">
-      <div ref={scrollRef} className="flex gap-6 overflow-hidden">
-        {items.map((student, i) => (
-          <div key={i} className="flex flex-col items-center gap-3 shrink-0">
-            <div className="w-44 h-52 rounded-3xl overflow-hidden shadow-lg bg-gray-200">
-              <img
-                src={student.image}
-                alt={student.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <p className="text-base font-semibold text-text-heading">
-              {student.name}
-            </p>
-          </div>
-        ))}
-      </div>
+    <div ref={ref} className="text-3xl lg:text-4xl font-bold">
+      {count}{suffix}
     </div>
   );
 }
@@ -155,69 +184,23 @@ function StudentSlider() {
 // --- Testimonial Slider ---
 
 function TestimonialSlider() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <div className="mt-12 relative overflow-hidden">
-      <div
-        className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${current * 100}%)` }}
-      >
-        {testimonials.map((t, i) => (
-          <div key={i} className="w-full shrink-0 px-4">
-            <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-md border border-gray-100">
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <Star
-                    key={j}
-                    size={18}
-                    className={
-                      j < Math.floor(t.rating)
-                        ? "fill-yellow-400 text-yellow-400"
-                        : j < t.rating
-                          ? "fill-yellow-400/50 text-yellow-400"
-                          : "text-gray-200"
-                    }
-                  />
-                ))}
-              </div>
-              <p className="text-text-muted-alt text-base leading-relaxed mb-6">
-                &ldquo;{t.text}&rdquo;
-              </p>
-              <div className="flex items-center gap-3 border-t border-gray-100 pt-5">
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-semibold text-text-heading">{t.name}</p>
-                  <p className="text-sm text-text-muted">{t.role}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Dots */}
-      <div className="flex justify-center gap-2 mt-6">
-        {testimonials.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-              i === current ? "bg-indigo w-6" : "bg-gray-300 hover:bg-gray-400"
-            }`}
-          />
-        ))}
+    <div className="mt-12 relative">
+      <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-md border border-gray-100 text-center">
+        <div className="flex justify-center gap-1 mb-4">
+          {Array.from({ length: 5 }).map((_, j) => (
+            <Star key={j} size={18} className="text-gray-200" />
+          ))}
+        </div>
+        <p className="text-text-muted text-lg font-medium mb-2">
+          Student Reviews
+        </p>
+        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-700 border border-yellow-300">
+          Pending
+        </span>
+        <p className="text-text-muted text-sm mt-4">
+          Reviews from our students will be displayed here soon.
+        </p>
       </div>
     </div>
   );
@@ -463,19 +446,6 @@ function ContactFormModal({
               ))}
             </div>
 
-            {/* What describes you well */}
-            {/* <div className="mb-6">
-              <label className="block text-sm font-medium text-text-heading mb-2">
-                What describes you well?
-              </label>
-              {["Achiever", "Extra Miler", "Slow Learner"].map((option) => (
-                <label key={option} className="flex items-center gap-2 mb-1">
-                  <input type="checkbox" className="accent-indigo" />
-                  <span className="text-sm text-text-muted-alt">{option}</span>
-                </label>
-              ))}
-            </div> */}
-
             <div className="flex gap-3">
               <button
                 type="submit"
@@ -512,193 +482,260 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="gradient-hero text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-indigo rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan rounded-full blur-3xl" />
+      <section className="gradient-hero text-white relative overflow-hidden min-h-[90vh] flex items-center">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-indigo/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo/5 rounded-full blur-3xl" />
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-                Build a Career in{" "}
-                <span className="text-cyan">
-                  Finance &amp; Strategic Consulting
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-8">
+                <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
+                <span className="text-sm font-medium text-cyan">Admissions Open for 2026</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
+                Break into{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal-300">
+                  Investment Banking, Equity Research, Management Consulting
                 </span>{" "}
-                — Not Just a Degree
+                &amp; Core Finance Roles.
               </h1>
-              <p className="text-lg text-text-on-dark leading-relaxed mb-8">
+              <p className="text-lg text-text-on-dark leading-relaxed mb-10 max-w-xl">
                 A structured, industry-led cohort program designed to help you
                 master financial modeling, valuation, equity research, and crack
-                real interviews. Built by experienced indutry professionals for
-                future finance professional | Trusted by students from IIMs &
+                real interviews. Built by experienced industry professionals for
+                future finance professionals | Trusted by students from IIMs &
                 top colleges
               </p>
 
-              {/* World Map Stats */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8">
-                <div className="flex items-center gap-2 mb-4">
-                  <Globe size={20} className="text-cyan" />
-                  <span className="text-sm text-text-on-dark">
-                    Students across the world
-                  </span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
-                      <Globe size={18} className="text-cyan" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">3+</p>
-                      <p className="text-xs text-text-on-dark">Countries</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
-                      <BookOpen size={18} className="text-cyan" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">5+</p>
-                      <p className="text-xs text-text-on-dark">
-                        Upskilling Courses
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center">
-                      <Building2 size={18} className="text-cyan" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">5+</p>
-                      <p className="text-xs text-text-on-dark">
-                        Top Colleges (Incl. IIM)
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Success tagline */}
-              <p className="text-lg font-semibold text-white mb-6">
-                This is Not Just a workshop. It’s Your Entry into Core Finance
-                Roles.
-              </p>
-
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 mb-10">
                 <button
                   onClick={() => setShowContactForm(true)}
-                  className="inline-flex items-center px-8 py-3 rounded-lg text-white font-semibold gradient-primary hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-indigo/30 cursor-pointer"
+                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold gradient-primary hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-indigo/30 hover:-translate-y-0.5 cursor-pointer"
                 >
                   Download Curriculum
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
                 <a
                   href="/cohorts"
-                  className="inline-flex items-center px-8 py-3 rounded-lg font-semibold border-2 border-cyan text-cyan hover:bg-cyan hover:text-white transition-all duration-300 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold border-2 border-cyan text-cyan hover:bg-cyan hover:text-white transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
                 >
                   Upcoming Cohort
                 </a>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center px-8 py-3 rounded-lg font-semibold border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
-                >
-                  Join free Workshops
-                </a>
               </div>
+
+              {/* Tagline */}
+              <p className="text-base text-text-on-dark flex items-center gap-2">
+                <Zap size={16} className="text-cyan" />
+                This is Not Just a workshop. It&apos;s Your Entry into Core Finance Roles.
+              </p>
             </div>
 
-            {/* Right side - Financial hub skyline */}
-            <div className="hidden lg:flex flex-col gap-4">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            {/* Right side - Hero Image */}
+            <div className="hidden lg:block relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/30">
                 <img
-                  src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&h=400&fit=crop"
-                  alt="Hong Kong financial district skyline"
-                  className="w-full h-[300px] object-cover"
+                  src="/hero-skyline.jpg"
+                  alt="Skyscrapers financial district"
+                  className="w-full h-[560px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 to-transparent" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&h=300&fit=crop"
-                    alt="Dubai financial skyline"
-                    className="w-full h-[220px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 via-transparent to-navy-dark/20" />
+
+                {/* Floating stat card */}
+                <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <p className="text-2xl font-bold text-white">3+</p>
+                      <p className="text-xs text-white/70">Countries</p>
+                    </div>
+                    <div className="border-x border-white/20">
+                      <p className="text-2xl font-bold text-white">5+</p>
+                      <p className="text-xs text-white/70">Courses</p>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-white">5+</p>
+                      <p className="text-xs text-white/70">Top Colleges</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=400&h=300&fit=crop"
-                    alt="Shanghai financial district"
-                    className="w-full h-[220px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 to-transparent" />
-                </div>
               </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-cyan/20 rounded-full blur-xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-indigo/20 rounded-full blur-xl" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Strip - Mobile visible */}
+      <section className="lg:hidden gradient-hero border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="w-10 h-10 rounded-xl bg-cyan/20 flex items-center justify-center mx-auto mb-2">
+                  <stat.icon size={18} className="text-cyan" />
+                </div>
+                <p className="text-2xl font-bold text-white">{stat.value}</p>
+                <p className="text-xs text-white/60">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Logos Strip */}
+      <section className="bg-white border-b border-gray-100 py-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <p className="text-xs font-medium text-text-muted uppercase tracking-wider text-center mb-4">Trusted by</p>
+          <div className="overflow-hidden">
+            <div className="flex animate-[marquee_20s_linear_infinite] gap-16 items-center w-max">
+              {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((logo, i) => (
+                <span
+                  key={i}
+                  className="text-gray-300 font-bold text-lg tracking-wider whitespace-nowrap hover:text-gray-500 transition-colors"
+                >
+                  {logo}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Why ASCENDIFY? */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-text-heading mb-4">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-indigo/5 text-indigo mb-4">
+              Our Difference
+            </span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-text-heading mb-4">
               Why <span className="gradient-text">ASCENDIFY</span>?
             </h2>
+            <p className="text-text-muted max-w-2xl mx-auto text-lg">
+              We don&apos;t just teach finance — we prepare you to get hired.
+            </p>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid gap-5">
-              {whyAscendify.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-light-bg hover:shadow-md transition-shadow duration-300"
-                >
-                  <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center shrink-0 mt-0.5">
-                    <CheckCircle2 size={16} className="text-white" />
-                  </div>
-                  <p className="text-text-muted-alt leading-relaxed">{item}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyAscendify.map((item, i) => (
+              <div
+                key={i}
+                className="group relative p-6 rounded-2xl bg-light-bg hover:bg-white hover:shadow-xl transition-all duration-500 border border-transparent hover:border-gray-100 cursor-default"
+              >
+                <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <item.icon size={22} className="text-white" />
                 </div>
-              ))}
-            </div>
+                <h3 className="font-bold text-text-heading text-lg mb-2">{item.title}</h3>
+                <p className="text-text-muted leading-relaxed text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Securing a Core-Finance Job Profile */}
+      <section className="gradient-hero py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 right-20 w-64 h-64 bg-cyan rounded-full blur-3xl" />
+          <div className="absolute bottom-10 left-10 w-80 h-80 bg-indigo rounded-full blur-3xl" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-white/10 border border-white/20 text-cyan mb-4">
+              Career Outcomes
+            </span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">
+              Securing a{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal-300">
+                Core-Finance Job Profile
+              </span>
+            </h2>
+            <p className="text-text-on-dark max-w-2xl mx-auto text-lg">
+              Our structured approach helps you land roles in Investment Banking, Equity Research, Corporate Finance & Management Consulting.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {jobProfiles.map((item, i) => (
+              <div
+                key={i}
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 hover:-translate-y-1"
+              >
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon size={24} className="text-white" />
+                </div>
+                <h4 className="font-bold text-white text-lg mb-2">{item.title}</h4>
+                <p className="text-sm text-text-on-dark leading-relaxed">{item.text}</p>
+                <div className="mt-4 flex items-center gap-1 text-cyan text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ChevronRight size={14} />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* What Our Students Say */}
-      <section className="bg-light-bg py-20">
+      <section className="bg-light-bg py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-4">
-            <p className="text-sm font-medium text-text-muted uppercase tracking-wider mb-2">
+            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-indigo/5 text-indigo mb-4">
               REVIEWS
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-text-heading mb-4">
+            </span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-text-heading mb-4">
               What Our <span className="gradient-text">Students Say</span>
             </h2>
-            <p className="text-text-muted max-w-2xl mx-auto font-medium">
+            <p className="text-text-muted max-w-2xl mx-auto text-lg">
               Listen from successful professionals who transformed their careers
-              with Ascendify. Here are their inspiring stories
+              with Ascendify
             </p>
           </div>
 
           {/* Testimonial Slider */}
           <TestimonialSlider />
+        </div>
+      </section>
 
-          {/* Student Slider - Auto sliding */}
-          <StudentSlider />
-
-          {/* Partner Logos Marquee */}
-          <div className="mt-14 border-t border-gray-200 pt-10 overflow-hidden">
-            <div className="flex animate-[marquee_20s_linear_infinite] gap-16 items-center w-max">
-              {[...partnerLogos, ...partnerLogos].map((logo, i) => (
-                <span
-                  key={i}
-                  className="text-gray-400 font-bold text-xl tracking-wider whitespace-nowrap"
+      {/* CTA Section */}
+      <section className="bg-white py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="gradient-primary rounded-3xl p-12 lg:p-16 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full blur-3xl" />
+            </div>
+            <div className="relative z-10">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Ready to Build Your Finance Career?
+              </h2>
+              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+                Join the next cohort and get mentored by top industry professionals. Limited seats available.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => setShowContactForm(true)}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-indigo font-bold hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-lg cursor-pointer"
                 >
-                  {logo}
-                </span>
-              ))}
+                  Get Started Today
+                  <ArrowRight size={18} />
+                </button>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border-2 border-white/40 text-white font-semibold hover:bg-white/10 transition-all cursor-pointer"
+                >
+                  Talk to Us
+                </a>
+              </div>
             </div>
           </div>
         </div>

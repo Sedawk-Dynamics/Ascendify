@@ -21,8 +21,12 @@ router.get("/verify/:certificateId", async (req: Request, res: Response) => {
       isValid: certificate.isValid,
       certificateId: certificate.certificateId,
       holderName: certificate.holderName,
+      college: certificate.college,
+      birthDate: certificate.birthDate,
+      batch: certificate.batch,
       programTitle: certificate.programTitle,
       issueDate: certificate.issueDate,
+      certificateHostUrl: certificate.certificateHostUrl,
     });
   } catch (error) {
     console.error("Verify certificate error:", error);
@@ -46,7 +50,7 @@ router.get("/", authMiddleware, async (_req: Request, res: Response) => {
 // POST /api/certificates - Create certificate (admin)
 router.post("/", authMiddleware, async (req: Request, res: Response) => {
   try {
-    const { certificateId, holderName, email, programTitle, issueDate, isValid } = req.body;
+    const { certificateId, holderName, email, programTitle, issueDate, isValid, college, birthDate, batch, certificateHostUrl } = req.body;
 
     if (!certificateId || !holderName || !email || !programTitle || !issueDate) {
       res.status(400).json({ error: "Missing required fields: certificateId, holderName, email, programTitle, issueDate." });
@@ -67,6 +71,10 @@ router.post("/", authMiddleware, async (req: Request, res: Response) => {
         programTitle,
         issueDate: new Date(issueDate),
         isValid: isValid ?? true,
+        college,
+        birthDate,
+        batch,
+        certificateHostUrl,
       },
     });
 
@@ -87,7 +95,7 @@ router.put("/:id", authMiddleware, async (req: Request, res: Response) => {
       return;
     }
 
-    const { holderName, email, programTitle, issueDate, isValid } = req.body;
+    const { holderName, email, programTitle, issueDate, isValid, college, birthDate, batch, certificateHostUrl } = req.body;
 
     const certificate = await prisma.certificate.update({
       where: { id },
@@ -97,6 +105,10 @@ router.put("/:id", authMiddleware, async (req: Request, res: Response) => {
         ...(programTitle !== undefined && { programTitle }),
         ...(issueDate !== undefined && { issueDate: new Date(issueDate) }),
         ...(isValid !== undefined && { isValid }),
+        ...(college !== undefined && { college }),
+        ...(birthDate !== undefined && { birthDate }),
+        ...(batch !== undefined && { batch }),
+        ...(certificateHostUrl !== undefined && { certificateHostUrl }),
       },
     });
 

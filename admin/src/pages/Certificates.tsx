@@ -3,7 +3,7 @@ import { api } from '../lib/api';
 import toast from 'react-hot-toast';
 import { HiPlus, HiPencil, HiTrash, HiXMark } from 'react-icons/hi2';
 
-const emptyForm = { certificateId: '', holderName: '', email: '', programTitle: '', issueDate: '', isValid: true };
+const emptyForm = { certificateId: '', holderName: '', email: '', college: '', birthDate: '', batch: '', programTitle: '', issueDate: '', certificateHostUrl: '', isValid: true };
 
 export default function Certificates() {
   const [certs, setCerts] = useState<any[]>([]);
@@ -17,7 +17,7 @@ export default function Certificates() {
   const openCreate = () => { setEditing(null); setForm(emptyForm); setShowModal(true); };
   const openEdit = (c: any) => {
     setEditing(c);
-    setForm({ certificateId: c.certificateId, holderName: c.holderName, email: c.email, programTitle: c.programTitle, issueDate: c.issueDate?.split('T')[0] || '', isValid: c.isValid });
+    setForm({ certificateId: c.certificateId, holderName: c.holderName, email: c.email, college: c.college || '', birthDate: c.birthDate || '', batch: c.batch || '', programTitle: c.programTitle, issueDate: c.issueDate?.split('T')[0] || '', certificateHostUrl: c.certificateHostUrl || '', isValid: c.isValid });
     setShowModal(true);
   };
 
@@ -56,8 +56,11 @@ export default function Certificates() {
             <tr>
               <th className="text-left p-4 text-sm font-medium text-gray-500">Certificate ID</th>
               <th className="text-left p-4 text-sm font-medium text-gray-500">Holder</th>
+              <th className="text-left p-4 text-sm font-medium text-gray-500">College</th>
+              <th className="text-left p-4 text-sm font-medium text-gray-500">Batch</th>
               <th className="text-left p-4 text-sm font-medium text-gray-500">Program</th>
               <th className="text-left p-4 text-sm font-medium text-gray-500">Issue Date</th>
+              <th className="text-left p-4 text-sm font-medium text-gray-500">Certificate</th>
               <th className="text-left p-4 text-sm font-medium text-gray-500">Status</th>
               <th className="text-left p-4 text-sm font-medium text-gray-500">Actions</th>
             </tr>
@@ -69,9 +72,19 @@ export default function Certificates() {
                 <td className="p-4">
                   <p className="font-medium text-[#1A0A4F]">{c.holderName}</p>
                   <p className="text-xs text-gray-400">{c.email}</p>
+                  {c.birthDate && <p className="text-xs text-gray-400">DOB: {c.birthDate}</p>}
                 </td>
+                <td className="p-4 text-sm text-gray-600">{c.college || '-'}</td>
+                <td className="p-4 text-sm text-gray-600">{c.batch || '-'}</td>
                 <td className="p-4 text-sm text-gray-600">{c.programTitle}</td>
                 <td className="p-4 text-sm text-gray-600">{new Date(c.issueDate).toLocaleDateString()}</td>
+                <td className="p-4">
+                  {c.certificateHostUrl ? (
+                    <a href={c.certificateHostUrl} target="_blank" rel="noopener noreferrer" className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition">
+                      View
+                    </a>
+                  ) : <span className="text-xs text-gray-400">-</span>}
+                </td>
                 <td className="p-4">
                   <span className={`text-xs px-2 py-1 rounded-full ${c.isValid ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}`}>
                     {c.isValid ? 'Valid' : 'Revoked'}
@@ -96,10 +109,10 @@ export default function Certificates() {
               <h2 className="text-lg font-semibold text-[#1A0A4F]">{editing ? 'Edit Certificate' : 'Issue Certificate'}</h2>
               <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600"><HiXMark className="w-5 h-5" /></button>
             </div>
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Certificate ID</label>
-                <input value={form.certificateId} onChange={e => setForm({...form, certificateId: e.target.value})} placeholder="ASC-2026-00001" className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" required />
+                <label className="block text-sm font-medium text-gray-700 mb-1">Certificate Credential ID</label>
+                <input value={form.certificateId} onChange={e => setForm({...form, certificateId: e.target.value})} placeholder="ASC202673157" className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" required />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -113,17 +126,39 @@ export default function Certificates() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">College</label>
+                  <input value={form.college} onChange={e => setForm({...form, college: e.target.value})} placeholder="IIM SIRMAUR" className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Birth Date</label>
+                  <input value={form.birthDate} onChange={e => setForm({...form, birthDate: e.target.value})} placeholder="DD/MM/YYYY" className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Batch</label>
+                  <input value={form.batch} onChange={e => setForm({...form, batch: e.target.value})} placeholder="FIN MODLEING APR26" className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" />
+                </div>
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Program Title</label>
                   <input value={form.programTitle} onChange={e => setForm({...form, programTitle: e.target.value})} className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" required />
                 </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Issue Date</label>
                   <input type="date" value={form.issueDate} onChange={e => setForm({...form, issueDate: e.target.value})} className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" required />
                 </div>
+                <div className="flex items-end pb-1">
+                  <div className="flex items-center gap-2">
+                    <input type="checkbox" checked={form.isValid} onChange={e => setForm({...form, isValid: e.target.checked})} id="isValid" className="rounded" />
+                    <label htmlFor="isValid" className="text-sm text-gray-700">Valid Certificate</label>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <input type="checkbox" checked={form.isValid} onChange={e => setForm({...form, isValid: e.target.checked})} id="isValid" className="rounded" />
-                <label htmlFor="isValid" className="text-sm text-gray-700">Valid Certificate</label>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Certificate Host URL</label>
+                <input value={form.certificateHostUrl} onChange={e => setForm({...form, certificateHostUrl: e.target.value})} placeholder="https://drive.google.com/... or SharePoint link" className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#4A2FBD] outline-none" />
               </div>
               <button type="submit" className="w-full py-2.5 bg-gradient-to-r from-[#4A2FBD] to-[#2ECEC6] text-white font-semibold rounded-lg hover:opacity-90 transition">
                 {editing ? 'Update Certificate' : 'Issue Certificate'}
