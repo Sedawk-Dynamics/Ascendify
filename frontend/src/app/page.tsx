@@ -676,9 +676,6 @@ export default function Home() {
                 </div>
                 <h4 className="font-bold text-white text-lg mb-2">{item.title}</h4>
                 <p className="text-sm text-text-on-dark leading-relaxed">{item.text}</p>
-                <div className="mt-4 flex items-center gap-1 text-cyan text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn more <ChevronRight size={14} />
-                </div>
               </div>
             ))}
           </div>
@@ -722,13 +719,6 @@ export default function Home() {
                 Join the next cohort and get mentored by top industry professionals. Limited seats available.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => setShowContactForm(true)}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-indigo font-bold hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-lg cursor-pointer"
-                >
-                  Get Started Today
-                  <ArrowRight size={18} />
-                </button>
                 <a
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border-2 border-white/40 text-white font-semibold hover:bg-white/10 transition-all cursor-pointer"
