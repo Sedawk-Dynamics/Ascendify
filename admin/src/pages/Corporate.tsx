@@ -15,7 +15,7 @@ export default function Corporate() {
 
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this inquiry?')) return;
-    try { await api.deleteCorporate(id); toast.success('Deleted'); setSelected(null); load(); } catch (err: any) { toast.error(err.message); }
+    try { await api.deleteCorporate(id); toast.success('Deleted'); load(); } catch (err: any) { toast.error(err.message); }
   };
 
   const unread = inquiries.filter(c => !c.isRead).length;
