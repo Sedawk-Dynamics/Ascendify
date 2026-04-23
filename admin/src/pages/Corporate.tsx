@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { api } from '../lib/api';
 import toast from 'react-hot-toast';
-import { HiTrash, HiCheck, HiBuildingOffice2, HiXMark } from 'react-icons/hi2';
+import { HiTrash, HiCheck, HiBuildingOffice2 } from 'react-icons/hi2';
 
 export default function Corporate() {
   const [inquiries, setInquiries] = useState<any[]>([]);
-  const [selected, setSelected] = useState<any>(null);
 
   const load = () => api.getCorporate().then(setInquiries).catch(() => {});
   useEffect(() => { load(); }, []);
