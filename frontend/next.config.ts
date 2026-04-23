@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   images: {
     remotePatterns: [
       {
@@ -13,7 +14,9 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/_/backend/:path*",
-        destination: "http://localhost:5002/:path*",
+        destination: process.env.BACKEND_URL
+          ? `${process.env.BACKEND_URL}/:path*`
+          : "http://localhost:5002/:path*",
       },
     ];
   },
