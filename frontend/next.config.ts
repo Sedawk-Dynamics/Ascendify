@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+
   images: {
     remotePatterns: [
       {
@@ -10,13 +11,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   async rewrites() {
     return [
       {
-        source: "/_/backend/:path*",
+        source: "/api/:path*",
         destination: process.env.BACKEND_URL
           ? `${process.env.BACKEND_URL}/:path*`
-          : "http://localhost:5002/:path*",
+          : "http://backend:5002/:path*",
       },
     ];
   },
