@@ -32,7 +32,7 @@ const services = [
     icon: GraduationCap,
     title: "Top Institution Grade Learning",
     description:
-      "Programs designed by candidates from IIMs, CA, CFA & Other globally recognised professional bodies, and top finance professionals for globally recognized credentials.",
+      "Programs designed by professionals from industry and IIMs, CA, CFA & Other globally recognised professional bodies, and top finance professionals for globally recognized credentials.",
   },
   {
     icon: BookOpen,

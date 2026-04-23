@@ -291,9 +291,11 @@ function KnowMoreModal({
   course: (typeof courses)[0];
   onClose: () => void;
 }) {
+  const details = programDetails.find((p) => p.id === course.id);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto relative">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 cursor-pointer z-10"
@@ -319,6 +321,9 @@ function KnowMoreModal({
             <p className="text-white/80 text-sm">
               ({course.subtitle})
             </p>
+            {details && (
+              <p className="text-white/60 text-sm mt-2">{details.description}</p>
+            )}
             <div className="mt-4 flex items-baseline gap-3">
               <span className="text-lg text-white/50 line-through">₹{course.originalPrice}</span>
               <span className="text-3xl font-bold">₹{course.price}</span>
@@ -331,12 +336,12 @@ function KnowMoreModal({
 
         {/* Content */}
         <div className="p-8">
-          {/* Course Features */}
+          {/* What You'll Learn */}
           <h3 className="text-lg font-bold text-text-heading mb-4">
             What You&apos;ll Learn
           </h3>
           <div className="space-y-3 mb-8">
-            {course.features.map((feature, i) => (
+            {(details?.whatYouLearn || course.features).map((feature, i) => (
               <div key={i} className="flex items-start gap-3">
                 <span className="w-5 h-5 rounded-full gradient-primary flex items-center justify-center shrink-0 mt-0.5">
                   <span className="text-white text-xs">✓</span>
@@ -355,7 +360,7 @@ function KnowMoreModal({
             leaders, ensuring you&apos;re equipped for real-world financial
             challenges.
           </p>
-          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
             {courseFeatures.map((f, i) => (
               <div
                 key={i}
@@ -373,6 +378,22 @@ function KnowMoreModal({
               </div>
             ))}
           </div>
+
+          {/* Live Project Points */}
+          {details && (
+            <div className="bg-indigo/5 rounded-xl p-4 border border-indigo/10 mb-8">
+              <div className="space-y-2">
+                {details.liveProjects.map((project, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span className="w-5 h-5 rounded-full gradient-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-white text-[10px]">✓</span>
+                    </span>
+                    <p className="text-text-muted text-sm">{project}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* CTA */}
           <div className="flex gap-4">
@@ -511,101 +532,6 @@ export default function CohortsPage() {
         </div>
       </section>
 
-
-      {/* Detailed Program Breakdown */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-text-heading mb-4">
-              Program <span className="gradient-text">Details</span>
-            </h2>
-            <p className="text-text-muted max-w-2xl mx-auto">
-              Explore what each program covers and the live projects you&apos;ll work on.
-            </p>
-          </div>
-
-          <div className="space-y-16">
-            {programDetails.map((program, index) => (
-              <div key={program.id} className="border border-gray-200 rounded-2xl overflow-hidden">
-                {/* Program Header */}
-                <div className="bg-gradient-to-r from-slate-900 to-slate-800 p-6 lg:p-8">
-                  <div className="flex items-start gap-4">
-                    <span className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      {index + 1}
-                    </span>
-                    <div>
-                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
-                        {program.title}
-                      </h3>
-                      <p className="text-gray-300 text-sm leading-relaxed">
-                        {program.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Program Content */}
-                <div className="grid lg:grid-cols-2 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
-                  {/* What You'll Learn */}
-                  <div className="p-6 lg:p-8">
-                    <div className="flex items-center gap-2 mb-5">
-                      <div className="w-1 h-6 rounded-full bg-indigo" />
-                      <h4 className="text-lg font-bold text-text-heading">
-                        What You&apos;ll Learn
-                      </h4>
-                    </div>
-                    <div className="space-y-3">
-                      {program.whatYouLearn.map((item, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <span className="w-1.5 h-1.5 rounded-full bg-indigo mt-2 flex-shrink-0" />
-                          <p className="text-text-muted text-sm leading-relaxed">{item}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Corporate Live Projects */}
-                  <div className="p-6 lg:p-8">
-                    <h4 className="text-lg font-bold text-text-heading mb-2">
-                      Corporate Live Projects You Undergo
-                    </h4>
-                    <p className="text-text-muted text-sm mb-6">
-                      Gain hands-on experience with live projects crafted by industry leaders, ensuring you&apos;re equipped for real-world financial challenges.
-                    </p>
-
-                    {/* 4 Feature Cards */}
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      {courseFeatures.map((f, i) => (
-                        <div key={i} className="bg-light-bg rounded-xl p-4 border border-gray-100">
-                          <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center mb-2">
-                            <f.icon size={16} className="text-white" />
-                          </div>
-                          <h5 className="font-semibold text-xs text-text-heading mb-1">{f.title}</h5>
-                          <p className="text-text-muted text-[11px] leading-relaxed">{f.description}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Live Project Points */}
-                    <div className="bg-indigo/5 rounded-xl p-4 border border-indigo/10">
-                      <div className="space-y-2">
-                        {program.liveProjects.map((project, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <span className="w-5 h-5 rounded-full gradient-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <span className="text-white text-[10px]">✓</span>
-                            </span>
-                            <p className="text-text-muted text-sm">{project}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* What Our Learners Say */}
       <section className="bg-light-bg py-10">
