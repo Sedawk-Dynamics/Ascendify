@@ -1,6 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Globe, ExternalLink, Share2, Link2 } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Globe,
+  ExternalLink,
+  Share2,
+  Link2,
+} from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -32,6 +40,7 @@ export default function Footer() {
               height={50}
               className="h-10 w-auto mb-4 brightness-200"
             />
+
             <p className="text-text-on-dark text-sm leading-relaxed">
               Empowering future leaders through industry-led cohort programs,
               expert mentorship, and guaranteed career outcomes.
@@ -82,11 +91,11 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-text-on-dark text-sm">
                 <Phone size={16} className="mt-0.5 text-cyan flex-shrink-0" />
-                +91 98765 43210
+                +91 86970 09762
               </li>
               <li className="flex items-start gap-3 text-text-on-dark text-sm">
                 <MapPin size={16} className="mt-0.5 text-cyan flex-shrink-0" />
-                Bangalore, India
+                Kolkata, India
               </li>
             </ul>
           </div>

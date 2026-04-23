@@ -11,7 +11,7 @@ import {
 
 const alumniCompanies = [
   "PwC",
-  "Ladderup",
+  "Deloitte",
   "KPMG",
   "Evalueserve",
   "CIEL",
@@ -358,7 +358,7 @@ export default function HireFromUsPage() {
             href="mailto:talent@ascendify.com"
             className="text-indigo font-semibold text-lg hover:underline"
           >
-            talent@ascendify.com
+            talent@ascendify.in
           </a>
         </div>
       </section>

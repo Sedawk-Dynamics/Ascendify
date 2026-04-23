@@ -145,7 +145,13 @@ const jobProfiles = [
 
 // --- Animated Counter ---
 
-function AnimatedCounter({ value, suffix = "" }: { value: string; suffix?: string }) {
+function AnimatedCounter({
+  value,
+  suffix = "",
+}: {
+  value: string;
+  suffix?: string;
+}) {
   const num = parseInt(value);
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -168,7 +174,7 @@ function AnimatedCounter({ value, suffix = "" }: { value: string; suffix?: strin
           }, 30);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -176,7 +182,8 @@ function AnimatedCounter({ value, suffix = "" }: { value: string; suffix?: strin
 
   return (
     <div ref={ref} className="text-3xl lg:text-4xl font-bold">
-      {count}{suffix}
+      {count}
+      {suffix}
     </div>
   );
 }
@@ -485,20 +492,32 @@ export default function Home() {
       <section className="gradient-hero text-white relative overflow-hidden min-h-[90vh] flex items-center">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-indigo/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-10 left-10 w-72 h-72 bg-indigo/20 rounded-full blur-3xl animate-pulse" />
+          <div
+            className="absolute bottom-20 right-10 w-96 h-96 bg-cyan/15 rounded-full blur-3xl animate-pulse"
+            style={{ animationDelay: "1s" }}
+          />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo/5 rounded-full blur-3xl" />
           {/* Grid pattern overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-10 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-8">
                 <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
-                <span className="text-sm font-medium text-cyan">Admissions Open for 2026</span>
+                <span className="text-sm font-medium text-cyan">
+                  Admissions Open for 2026
+                </span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
@@ -523,7 +542,10 @@ export default function Home() {
                   className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold gradient-primary hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-indigo/30 hover:-translate-y-0.5 cursor-pointer"
                 >
                   Download Curriculum
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
                 </button>
                 <a
                   href="/cohorts"
@@ -536,7 +558,8 @@ export default function Home() {
               {/* Tagline */}
               <p className="text-base text-text-on-dark flex items-center gap-2">
                 <Zap size={16} className="text-cyan" />
-                This is Not Just a workshop. It&apos;s Your Entry into Core Finance Roles.
+                This is Not Just a workshop. It&apos;s Your Entry into Core
+                Finance Roles.
               </p>
             </div>
 
@@ -597,17 +620,21 @@ export default function Home() {
       {/* Partner Logos Strip */}
       <section className="bg-white border-b border-gray-100 py-6 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <p className="text-xs font-medium text-text-muted uppercase tracking-wider text-center mb-4">Trusted by</p>
+          <p className="text-xs font-medium text-text-muted uppercase tracking-wider text-center mb-4">
+            Trusted by
+          </p>
           <div className="overflow-hidden">
             <div className="flex animate-[marquee_20s_linear_infinite] gap-16 items-center w-max">
-              {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((logo, i) => (
-                <span
-                  key={i}
-                  className="text-gray-300 font-bold text-lg tracking-wider whitespace-nowrap hover:text-gray-500 transition-colors"
-                >
-                  {logo}
-                </span>
-              ))}
+              {[...partnerLogos, ...partnerLogos, ...partnerLogos].map(
+                (logo, i) => (
+                  <span
+                    key={i}
+                    className="text-gray-300 font-bold text-lg tracking-wider whitespace-nowrap hover:text-gray-500 transition-colors"
+                  >
+                    {logo}
+                  </span>
+                ),
+              )}
             </div>
           </div>
         </div>
@@ -636,8 +663,12 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   <item.icon size={22} className="text-white" />
                 </div>
-                <h3 className="font-bold text-text-heading text-lg mb-2">{item.title}</h3>
-                <p className="text-text-muted leading-relaxed text-sm">{item.text}</p>
+                <h3 className="font-bold text-text-heading text-lg mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-text-muted leading-relaxed text-sm">
+                  {item.text}
+                </p>
               </div>
             ))}
           </div>
@@ -662,7 +693,9 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-text-on-dark max-w-2xl mx-auto text-lg">
-              Our structured approach helps you land roles in Investment Banking, Equity Research, Corporate Finance & Management Consulting.
+              Our structured approach helps you land roles in Investment
+              Banking, Equity Research, Corporate Finance & Management
+              Consulting.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -671,11 +704,17 @@ export default function Home() {
                 key={i}
                 className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 hover:-translate-y-1"
               >
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <div
+                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
+                >
                   <item.icon size={24} className="text-white" />
                 </div>
-                <h4 className="font-bold text-white text-lg mb-2">{item.title}</h4>
-                <p className="text-sm text-text-on-dark leading-relaxed">{item.text}</p>
+                <h4 className="font-bold text-white text-lg mb-2">
+                  {item.title}
+                </h4>
+                <p className="text-sm text-text-on-dark leading-relaxed">
+                  {item.text}
+                </p>
               </div>
             ))}
           </div>
@@ -708,17 +747,29 @@ export default function Home() {
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-cyan/15 rounded-full blur-3xl" />
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-4">
                 Ready to Build Your{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal-300">Finance Career</span>?
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal-300">
+                  Finance Career
+                </span>
+                ?
               </h2>
               <p className="text-text-on-dark text-lg leading-relaxed mb-8">
-                Join the next cohort and get mentored by top industry professionals. Limited seats available — start your journey today.
+                Join the next cohort and get mentored by top industry
+                professionals. Limited seats available — start your journey
+                today.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -726,7 +777,10 @@ export default function Home() {
                   className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-cyan text-navy-dark font-bold hover:bg-teal-300 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan/30 cursor-pointer"
                 >
                   Talk to Us
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
                 </a>
                 <a
                   href="/cohorts"

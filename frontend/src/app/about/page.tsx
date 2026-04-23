@@ -5,6 +5,7 @@ import {
   Heart,
   Eye,
   Rocket,
+  CheckCircle2,
 } from "lucide-react";
 
 const values = [
@@ -51,67 +52,104 @@ export default function AboutPage() {
             About Ascendify
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Empowering Careers,
+            Ascending your Career
             <br />
-            <span className="text-cyan">Transforming Lives</span>
+            <span className="text-cyan text-2xl sm:text-3xl lg:text-4xl"> Bridging the Gap Between Education & Real Finance Careers</span>
           </h1>
           <p className="text-text-on-dark text-lg max-w-2xl mx-auto">
-            We are on a mission to bridge the gap between education and
-            employability through industry-led cohort programs.
+            ASCENDIFY is built to solve one problem — why talented students struggle to break into Investment Banking, Equity Research, and core finance roles despite having degrees.
           </p>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
-            <div className="relative">
+            <div className="relative group">
+              <div className="absolute -inset-3 bg-gradient-to-br from-indigo/20 to-cyan/20 rounded-3xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
               <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&h=500&fit=crop"
-                alt="Team collaborating on career education"
-                className="w-full aspect-[4/3] rounded-2xl object-cover shadow-lg"
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&h=500&fit=crop"
+                alt="Students working on laptops with finance charts"
+                className="relative w-full aspect-[4/3] rounded-2xl object-cover shadow-xl"
               />
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-cyan/20 rounded-2xl -z-10" />
+              <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center flex-shrink-0">
+                    <Rocket size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-text-heading">Real-World Training</p>
+                    <p className="text-xs text-text-muted">Financial modeling, valuation & analysis</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <div className="mb-10">
+            <div className="space-y-10">
+              <div className="bg-light-bg rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center">
-                    <Target size={20} className="text-white" />
+                  <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center shadow-md">
+                    <Target size={22} className="text-white" />
                   </div>
                   <h2 className="text-2xl font-bold text-text-heading">
                     Our Mission
                   </h2>
                 </div>
                 <p className="text-text-muted leading-relaxed">
-                  To democratize access to quality career education by creating
-                  transformative, cohort-based learning experiences that combine
-                  industry expertise, hands-on projects, and guaranteed placement
-                  support. We believe every aspiring professional deserves a
-                  clear pathway to their dream career.
+                  To equip aspiring finance professionals with practical, industry-relevant skills in financial modeling, valuation, and investment analysis through structured, cohort-based learning — enabling them to confidently secure roles in core finance domains.
                 </p>
               </div>
 
-              <div>
+              <div className="bg-light-bg rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center">
-                    <Eye size={20} className="text-white" />
+                  <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center shadow-md">
+                    <Eye size={22} className="text-white" />
                   </div>
                   <h2 className="text-2xl font-bold text-text-heading">
                     Our Vision
                   </h2>
                 </div>
                 <p className="text-text-muted leading-relaxed">
-                  To become the world&apos;s most trusted career acceleration
-                  platform, where talent meets opportunity and every learner
-                  achieves their full potential. We envision a future where
-                  career success is driven by skills, not circumstances.
+                  To become a leading global platform for finance career acceleration, where students are trained not just to learn concepts, but to think, analyze, and perform like professionals in Investment Banking, Equity Research, and Corporate Finance.
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Makes Different */}
+      <section className="bg-light-bg py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-5 shadow-lg">
+              <Rocket size={26} className="text-white" />
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-text-heading mb-4">
+              What Makes <span className="gradient-text">ASCENDIFY</span> Different
+            </h2>
+            <p className="text-text-muted max-w-2xl mx-auto">
+              We don&apos;t just teach finance — we prepare you to perform like a professional from day one.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "Built by professionals from Investment Banking & Corporate Finance backgrounds",
+              "Focus on real-world application, not theoretical learning",
+              "Structured roadmap aligned with industry hiring requirements",
+              "Hands-on modeling, valuation, and case-based learning",
+              "Personalized mentorship & interview preparation",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl p-5 border border-gray-100 flex items-start gap-3 hover:shadow-md transition-shadow"
+              >
+                <CheckCircle2 size={20} className="text-cyan flex-shrink-0 mt-0.5" />
+                <p className="text-text-muted text-sm leading-relaxed">{item}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

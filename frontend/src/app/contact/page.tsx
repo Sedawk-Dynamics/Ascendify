@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PrimaryButton } from "@/components/Button";
-import { Mail, Phone, MapPin, Headphones, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, Phone, Headphones, Send, CheckCircle, AlertCircle } from "lucide-react";
 
 const contactInfo = [
   {
@@ -14,15 +14,10 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    detail: "+91 98765 43210",
+    detail: "+91 86970 09762",
     sub: "Mon-Sat, 9 AM - 7 PM",
   },
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    detail: "Bangalore, India",
-    sub: "HSR Layout, Sector 7",
-  },
+ 
   {
     icon: Headphones,
     title: "24/7 Hotline",
@@ -162,7 +157,7 @@ export default function ContactPage() {
                           setForm({ ...form, city: e.target.value })
                         }
                         className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo/30 focus:border-indigo text-sm transition-all"
-                        placeholder="Bangalore"
+                        placeholder="Kolkata"
                       />
                     </div>
                   </div>

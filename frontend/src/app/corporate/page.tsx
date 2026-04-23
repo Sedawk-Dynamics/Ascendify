@@ -26,19 +26,19 @@ const services = [
     icon: Target,
     title: "Customized Training Programs",
     description:
-      "Tailored workforce training aligned with your corporate objectives in finance, strategy, and consulting domains.",
+      "Tailored workforce training aligned with your corporate objectives.",
   },
   {
     icon: GraduationCap,
-    title: "Top Institution Certifications",
+    title: "Top Institution Grade Learning",
     description:
-      "Programs designed with IIMs, CFA Institute, and top finance professionals for globally recognized credentials.",
+      "Programs designed by candidates from IIMs, CA, CFA & Other globally recognised professional bodies, and top finance professionals for globally recognized credentials.",
   },
   {
     icon: BookOpen,
     title: "Extensive Course Portfolio",
     description:
-      "From Financial Modeling to M&A, Investment Banking to Wealth Management — covering all finance verticals.",
+      "From Finance to strategy to AI and office automation — covering all verticals.",
   },
   {
     icon: Users,
@@ -64,7 +64,7 @@ const impactStats = [
   { value: "45%", label: "Higher Employee Retention", icon: Users },
   { value: "91%", label: "Productivity Increase", icon: TrendingUp },
   { value: "93%", label: "Achieved Measurable Growth", icon: BarChart3 },
-  { value: "250+", label: "Corporate Partners", icon: Building2 },
+  { value: "25+", label: "Corporate Partners", icon: Building2 },
 ];
 
 const corporateBenefits = [
@@ -164,12 +164,11 @@ export default function CorporatePage() {
               </span>
               <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
                 Strengthen Your Team&apos;s{" "}
-                <span className="text-cyan">Finance &amp; Strategy</span> Skills
+                <span className="text-cyan">Technical</span> Skills
               </h1>
               <p className="text-text-on-dark text-lg leading-relaxed mb-8 max-w-lg">
                 Amplify employee performance with industry-led upskilling
-                programs in Financial Modeling, Investment Banking, Consulting
-                &amp; more. Partnered with top institutions.
+                programs.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -388,7 +387,7 @@ export default function CorporatePage() {
                       Pan-India &amp; Global Reach
                     </p>
                     <p className="text-xs text-text-muted">
-                      Training teams across 8+ countries
+                      Training teams across 3+ countries
                     </p>
                   </div>
                 </div>
