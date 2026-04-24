@@ -7,10 +7,13 @@ services:
       - PORT=5002
       - JWT_SECRET=${JWT_SECRET}
       - DOMAIN=${DOMAIN}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-}
       - SMTP_HOST=${SMTP_HOST:-}
       - SMTP_PORT=${SMTP_PORT:-}
       - SMTP_USER=${SMTP_USER:-}
       - SMTP_PASS=${SMTP_PASS:-}
+    volumes:
+      - uploads:/app/uploads
     restart: unless-stopped
 
   frontend:
@@ -31,3 +34,6 @@ services:
       - backend
       - admin
     restart: unless-stopped
+
+volumes:
+  uploads:
