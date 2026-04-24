@@ -29,15 +29,6 @@ services:
       context: ./admin
     restart: unless-stopped
 
-  nginx:
-    build:
-      context: ./nginx
-    depends_on:
-      - frontend
-      - backend
-      - admin
-    restart: unless-stopped
-
 networks:
   dokploy-network:
     external: true
