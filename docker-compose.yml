@@ -12,6 +12,9 @@ services:
       - SMTP_PORT=${SMTP_PORT:-}
       - SMTP_USER=${SMTP_USER:-}
       - SMTP_PASS=${SMTP_PASS:-}
+    networks:
+      - default
+      - dokploy-network
     volumes:
       - uploads:/app/uploads
     restart: unless-stopped
@@ -34,6 +37,10 @@ services:
       - backend
       - admin
     restart: unless-stopped
+
+networks:
+  dokploy-network:
+    external: true
 
 volumes:
   uploads:
