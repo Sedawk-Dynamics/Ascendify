@@ -68,7 +68,7 @@ export default function VerifyPage() {
     setCertificate(null);
     try {
       const res = await fetch(
-        `/_/backend/api/certificates/verify/${encodeURIComponent(certId.trim())}`
+        `/api/certificates/verify/${encodeURIComponent(certId.trim())}`
       );
       if (res.ok) {
         const data = await res.json();

@@ -20,7 +20,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/_/backend/api/blogs")
+    fetch("/api/blogs")
       .then((res) => res.json())
       .then((data) => { setBlogs(data); setLoading(false); })
       .catch(() => setLoading(false));

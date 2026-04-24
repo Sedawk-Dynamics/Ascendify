@@ -124,7 +124,7 @@ export default function CorporatePage() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("/_/backend/api/corporate", {
+      const res = await fetch("/api/corporate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

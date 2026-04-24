@@ -25,7 +25,7 @@ export default function BlogPostPage() {
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    fetch(`/_/backend/api/blogs/${slug}`)
+    fetch(`/api/blogs/${slug}`)
       .then((res) => {
         if (res.status === 404) { setNotFound(true); setLoading(false); return null; }
         return res.json();

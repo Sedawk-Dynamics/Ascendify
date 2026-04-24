@@ -28,7 +28,7 @@ export default function JobBoardPage() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("/_/backend/api/jobs")
+    fetch("/api/jobs")
       .then((res) => res.json())
       .then((data) => { setJobs(data); setLoading(false); })
       .catch(() => setLoading(false));
