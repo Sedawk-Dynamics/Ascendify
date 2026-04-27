@@ -274,34 +274,10 @@ const courseFeatures = [
 
 const learnerReviews = [
   {
-    name: "Palak Gupta",
-    role: "MBA Finance, NMIMS, Mumbai",
-    text: "Before Ascendify, I understood theory but not practical valuation. The cohort helped me build confidence for finance interviews.",
-    rating: 5,
-  },
-  {
-    name: "Rahul Jain",
-    role: "MBA Finance | Pune",
-    text: "The program gave me a strong understanding of how financial decisions are actually taken in companies. From cash flow analysis to valuation and modeling, everything was taught in a very practical and application-based manner.",
-    rating: 5,
-  },
-  {
-    name: "Utkarsh Kejriwal",
-    role: "BCom & CA - St. Xavier's College, Kolkata",
-    text: "ASCENDIFY helped me move from a basic understanding of finance to actually thinking like an analyst. The mock interviews and structured approach made a huge difference in my confidence.",
-    rating: 5,
-  },
-  {
-    name: "Simran Modi",
-    role: "KPMG, Bangalore",
-    text: "Training and Workshops conducted by Ascendify are really enriching. It has really helped me to ascend my career journey. At Ascendify, I've learned practical valuation concepts so well like anything that boosted my job skill.",
-    rating: 5,
-  },
-  {
     name: "Himanshu Garg",
     role: "IIM Sirmaur, MBA Student",
-    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initially planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
-    rating: 5,
+    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initaly planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
+    rating: 4.5,
     image: "./HimanshuGarg.png",
   },
   {
@@ -607,17 +583,11 @@ export default function CohortsPage() {
                   {review.text}
                 </p>
                 <div className="flex items-center gap-3 border-t border-gray-100 pt-4">
-                  {review.image ? (
-                    <img
-                      src={review.image}
-                      alt={review.name}
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo to-cyan flex items-center justify-center text-white font-bold text-sm">
-                      {review.name.charAt(0)}
-                    </div>
-                  )}
+                  <img
+                    src={review.image}
+                    alt={review.name}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
                   <div>
                     <p className="font-semibold text-sm text-text-heading">
                       {review.name}
