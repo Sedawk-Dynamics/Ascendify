@@ -34,7 +34,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Image
-              src="/Ascendify.png"
+              src="/AscendifyLogo.png"
               alt="Ascendify"
               width={140}
               height={50}

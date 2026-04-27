@@ -28,6 +28,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
+    razorpayLink:"https://rzp.io/rzp/ascendify",
   },
   {
     id: "2",
@@ -43,6 +44,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
+    razorpayLink:"https://rzp.io/rzp/Fo3eB23",
   },
   {
     id: "3",
@@ -58,6 +60,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
+    razorpayLink:"/contact",
   },
   {
     id: "4",
@@ -73,6 +76,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
+    razorpayLink:"/contact",
   },
   {
     id: "5",
@@ -88,6 +92,7 @@ const courses = [
       "Certificate on completion",
       "Dedicated doubt-solving sessions",
     ],
+    razorpayLink:"/contact",
   },
   {
     id: "6",
@@ -103,6 +108,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
+    razorpayLink:"/contact",
   },
 ];
 
@@ -260,26 +266,20 @@ const courseFeatures = [
 
 const learnerReviews = [
   {
-    name: "Krishna Mulchandani",
-    role: "Student TVS",
-    text: "This cohort changed my perspective on finance. I rated myself 0 in Excel and PPT, but through live classes and report-making, I built confidence. Case studies and discussions on news and markets made learning practical.",
+    name: "Himanshu Garg",
+    role: "IIM Sirmaur, MBA Student",
+    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initaly planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face",
+    image: "./HimanshuGarg.png",
   },
   {
-    name: "Bhaskar Pintu Pal",
-    role: "Student TVS",
-    text: "This cohort shaped my future. Parth Sir's simple yet powerful teaching gave me finance knowledge, business insights, and life advice. He guided us like a big brother. This is more than a course — it's family.",
+    name: "Aarav Anand",
+    role: "IIM Sirmaur, MBA Student",
+    text: "It was really in depth and covered all the topics. Cohort and workshop was really value for money. The applied, hands on focus makes a big difference. The cohort were built around real-world datasets or practical problems, it moves things beyond theories and into actual skill-building.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    image: "./AaravAnand.png",
   },
-  {
-    name: "Kamini Rathore",
-    role: "FMBV 7 Batch",
-    text: "Journey in Finocontrol is good exciting learning. Joining Finocontrol is really inspiring motivating and learning new skills. Faculty in Finocontrol is good and helpful.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-  },
+
 ];
 
 // --- Know More Modal ---
@@ -398,7 +398,7 @@ function KnowMoreModal({
           {/* CTA */}
           <div className="flex gap-4">
             <a
-              href="/contact"
+              href={course.razorpayLink}
               className="flex-1 inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold gradient-primary hover:opacity-90 transition-all cursor-pointer"
             >
               Pay &amp; Enroll
@@ -442,13 +442,9 @@ export default function CohortsPage() {
             Our <span className="text-cyan">Career Accelerator Programs</span>
           </h1>
           <p className="text-text-on-dark text-lg max-w-3xl mx-auto mb-4">
-            Structured, cohort-based programs designed to help you break into Investment Banking, Equity Research, and Strategic Finance roles.
+            Structured, cohort-based programs designed by IB professionals to help you break into Investment Banking, Equity Research, and Strategic Finance roles.
           </p>
-          <p className="text-text-on-dark text-base max-w-3xl mx-auto mb-10">
-            Explore our live and immersive cohort-based programs led by industry
-            pioneers from brands like Deloitte, EY, PWC, BDO, Boutique PE &amp;
-            VC firms from USA &amp; Canada many more
-          </p>
+         
           <div className="flex justify-center items-center gap-4 max-w-5xl mx-auto">
             {[
               "Live interactive sessions",
@@ -514,7 +510,7 @@ export default function CohortsPage() {
                 {/* Buttons */}
                 <div className="p-5 flex gap-3">
                   <a
-                    href="/contact"
+                    href={course.razorpayLink}
                     className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg font-semibold text-sm border-2 border-indigo text-indigo hover:bg-indigo hover:text-white transition-all cursor-pointer"
                   >
                     Pay &amp; Enroll

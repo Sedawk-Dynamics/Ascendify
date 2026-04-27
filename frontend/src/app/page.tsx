@@ -98,14 +98,6 @@ const testimonials = [
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
   },
-  {
-    name: "Kamini Rathore",
-    role: "V 9 Batch",
-    text: "Training by finocontrol turned out to be a direct investment in my future. The sessions were amazing.",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face",
-  },
 ];
 
 const partnerLogos = [
@@ -120,25 +112,25 @@ const jobProfiles = [
   {
     icon: FileText,
     title: "Resume Building",
-    text: "Craft finance-ready resumes that stand out to recruiters",
+    text: "Finance-ready resume and LinkedIn optimisation",
     color: "from-indigo to-purple-500",
   },
   {
     icon: Target,
     title: "Interview Prep",
-    text: "Technical & behavioral interview training with real case studies",
+    text: "Technical interview prep: valuation, accounting, DCF, ratios, case rounds",
     color: "from-cyan to-teal-400",
   },
   {
     icon: Briefcase,
     title: "Job Placement",
-    text: "Direct connections with hiring partners in finance & consulting",
+    text: "Hiring guidance for IB / ER / Corp Finance / Consulting roles",
     color: "from-indigo to-cyan",
   },
   {
     icon: TrendingUp,
     title: "Career Growth",
-    text: "Ongoing mentorship & networking for long-term career success",
+    text: "Networking and career mentorship + Live projects and case studies for portfolio proof",
     color: "from-purple-500 to-indigo",
   },
 ];
@@ -523,16 +515,12 @@ export default function Home() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
                 Break into{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal-300">
-                  Investment Banking, Equity Research, Management Consulting
+                  Core Finance Roles with Industry-Led
                 </span>{" "}
-                &amp; Core Finance Roles.
+                Live Cohorts
               </h1>
               <p className="text-lg text-text-on-dark leading-relaxed mb-10 max-w-xl">
-                A structured, industry-led cohort program designed to help you
-                master financial modeling, valuation, equity research, and crack
-                real interviews. Built by experienced industry professionals for
-                future finance professionals | Trusted by students from IIMs &
-                top colleges
+                Structured, industry-led cohort programs designed for MBA, BBA, BCom, CFA & Economics students aiming for Investment Banking, Equity Research, Corporate Finance and Consulting roles.
               </p>
 
               {/* CTA Buttons */}
@@ -558,8 +546,7 @@ export default function Home() {
               {/* Tagline */}
               <p className="text-base text-text-on-dark flex items-center gap-2">
                 <Zap size={16} className="text-cyan" />
-                This is Not Just a workshop. It&apos;s Your Entry into Core
-                Finance Roles.
+                Learn the exact skills recruiters test in finance interviews
               </p>
             </div>
 

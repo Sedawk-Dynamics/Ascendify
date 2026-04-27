@@ -74,7 +74,7 @@ export default function AboutPage() {
                 alt="Students working on laptops with finance charts"
                 className="relative w-full aspect-[4/3] rounded-2xl object-cover shadow-xl"
               />
-              <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
+              {/* <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center flex-shrink-0">
                     <Rocket size={18} className="text-white" />
@@ -84,7 +84,7 @@ export default function AboutPage() {
                     <p className="text-xs text-text-muted">Financial modeling, valuation & analysis</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="space-y-10">

@@ -243,8 +243,8 @@ export default function FloatingButtons() {
           <Image
             src="/logo2.png"
             alt="BGTFS"
-            width={56}
-            height={28}
+            width={66}
+            height={38}
             className="object-contain w-auto h-auto"
           />
         </div>
