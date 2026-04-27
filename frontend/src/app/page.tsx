@@ -15,12 +15,12 @@ import {
   Users,
   FileText,
   TrendingUp,
-  Quote,
   Play,
   Award,
   BarChart3,
   Zap,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 
 // --- Data ---
@@ -67,36 +67,37 @@ const stats = [
 
 const testimonials = [
   {
-    name: "Krishna Mulchandani",
-    role: "Student TVS",
-    text: "This cohort changed my perspective on finance. I rated myself 0 in Excel and PPT, but through live classes and report-making, I built confidence. Case studies and discussions on news and markets made learning practical. These skills will stay with me for life.",
-    rating: 4.5,
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face",
+    name: "Palak Gupta",
+    role: "MBA Finance, NMIMS, Mumbai",
+    text: "Before Ascendify, I understood theory but not practical valuation. The cohort helped me build confidence for finance interviews.",
+    rating: 5,
   },
   {
-    name: "Bhaskar Pintu Pal",
-    role: "Student TVS",
-    text: "This cohort shaped my future. Parth Sir's simple yet powerful teaching gave me finance knowledge, business insights, and life advice. He guided us like a big brother. Report-making, market discussions, and the learning community created here are invaluable. This is more than a course — it's family.",
+    name: "Rahul Jain",
+    role: "MBA Finance | Pune",
+    text: "The program gave me a strong understanding of how financial decisions are actually taken in companies. From cash flow analysis to valuation and modeling, everything was taught in a very practical and application-based manner.",
     rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
   },
   {
-    name: "Kamini Rathore",
-    role: "FMBV 7 Batch",
-    text: "Journey in Finocontrol is good exciting learning. Joining Finocontrol is really inspiring motivating and learning new skills. Faculty in Finocontrol is good and helpful.",
+    name: "Utkarsh Kejriwal",
+    role: "BCom & CA - St. Xavier's College, Kolkata",
+    text: "ASCENDIFY helped me move from a basic understanding of finance to actually thinking like an analyst. The mock interviews and structured approach made a huge difference in my confidence.",
     rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    image: "/UtkarshKejriwal.png"
   },
   {
-    name: "Rinky",
-    role: "FMBV 7 Batch",
-    text: "Finocontrol has been great, actually learned what value a financial model can add to your work and how to actually mould yourself according to your work role in the corporate.",
+    name: "Simran Modi",
+    role: "KPMG, Bangalore",
+    text: "Training and Workshops conducted by Ascendify are really enriching. It has really helped me to ascend my career journey. At Ascendify, I've learned practical valuation concepts so well like anything that boosted my job skill.",
     rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    
+  },
+  {
+    name: "Himanshu Garg",
+    role: "IIM Sirmaur, MBA Student",
+    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initially planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
+    rating: 5,
+    image: "/HimanshuGarg.png",
   },
 ];
 
@@ -180,27 +181,99 @@ function AnimatedCounter({
   );
 }
 
-// --- Testimonial Slider ---
+// --- Testimonial Grid ---
 
 function TestimonialSlider() {
+  const [current, setCurrent] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const total = testimonials.length;
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % total);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isAutoPlaying, total]);
+
+  const prev = () => {
+    setIsAutoPlaying(false);
+    setCurrent((c) => (c - 1 + total) % total);
+  };
+  const next = () => {
+    setIsAutoPlaying(false);
+    setCurrent((c) => (c + 1) % total);
+  };
+
+  const review = testimonials[current];
+
   return (
-    <div className="mt-12 relative">
-      <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-md border border-gray-100 text-center">
-        <div className="flex justify-center gap-1 mb-4">
+    <div className="mt-12 relative max-w-2xl mx-auto">
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="flex gap-1 mb-4">
           {Array.from({ length: 5 }).map((_, j) => (
-            <Star key={j} size={18} className="text-gray-200" />
+            <Star
+              key={j}
+              size={16}
+              className={
+                j < review.rating
+                  ? "fill-yellow-400 text-yellow-400"
+                  : "text-gray-200"
+              }
+            />
           ))}
         </div>
-        <p className="text-text-muted text-lg font-medium mb-2">
-          Student Reviews
+        <p className="text-text-muted text-sm leading-relaxed mb-6 italic">
+          &ldquo;{review.text}&rdquo;
         </p>
-        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-700 border border-yellow-300">
-          Pending
-        </span>
-        <p className="text-text-muted text-sm mt-4">
-          Reviews from our students will be displayed here soon.
-        </p>
+        <div className="flex items-center gap-3 border-t border-gray-100 pt-4">
+          {review.image ? (
+            <img
+              src={review.image}
+              alt={review.name}
+              className="w-10 h-10 rounded-full object-cover"
+            />
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo to-cyan flex items-center justify-center text-white font-bold text-sm">
+              {review.name.charAt(0)}
+            </div>
+          )}
+          <div>
+            <p className="font-semibold text-sm text-text-heading">
+              {review.name}
+            </p>
+            <p className="text-xs text-text-muted">{review.role}</p>
+          </div>
+        </div>
       </div>
+      <div className="flex justify-center gap-2 mt-6">
+        {testimonials.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setIsAutoPlaying(false);
+              setCurrent(i);
+            }}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${
+              i === current
+                ? "bg-indigo w-6"
+                : "bg-gray-300 hover:bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
+      <button
+        onClick={prev}
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+      >
+        <ChevronLeft size={20} className="text-text-heading" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+      >
+        <ChevronRight size={20} className="text-text-heading" />
+      </button>
     </div>
   );
 }

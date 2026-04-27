@@ -28,7 +28,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
-    razorpayLink:"https://rzp.io/rzp/ascendify",
+    razorpayLink: "https://rzp.io/rzp/ascendify",
   },
   {
     id: "2",
@@ -44,7 +44,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
-    razorpayLink:"https://rzp.io/rzp/Fo3eB23",
+    razorpayLink: "https://rzp.io/rzp/Fo3eB23",
   },
   {
     id: "3",
@@ -60,7 +60,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
-    razorpayLink:"/contact",
+    razorpayLink: "/contact",
   },
   {
     id: "4",
@@ -76,7 +76,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
-    razorpayLink:"/contact",
+    razorpayLink: "/contact",
   },
   {
     id: "5",
@@ -92,12 +92,13 @@ const courses = [
       "Certificate on completion",
       "Dedicated doubt-solving sessions",
     ],
-    razorpayLink:"/contact",
+    razorpayLink: "/contact",
   },
   {
     id: "6",
     title: "Power BI Dashboard Program",
-    subtitle: "10 weeks of live project-based Power BI financial & marketing dashboard building",
+    subtitle:
+      "10 weeks of live project-based Power BI financial & marketing dashboard building",
     originalPrice: "10,000",
     price: "7,000",
     features: [
@@ -108,7 +109,7 @@ const courses = [
       "Certificate on completion",
       "Placement assistance & interview prep",
     ],
-    razorpayLink:"/contact",
+    razorpayLink: "/contact",
   },
 ];
 
@@ -116,7 +117,8 @@ const programDetails = [
   {
     id: "1",
     title: "Advanced Financial Modeling & Financial Analysis Certificate",
-    description: "A fast-track, hands-on program designed to build your core financial modeling foundation through real company applications.",
+    description:
+      "A fast-track, hands-on program designed to build your core financial modeling foundation through real company applications.",
     whatYouLearn: [
       "Build integrated 3-statement financial models from scratch",
       "Financial statement analysis & forecasting techniques",
@@ -135,7 +137,8 @@ const programDetails = [
   {
     id: "2",
     title: "Investment Banking & Equity Research Bootcamp",
-    description: "A structured, end-to-end program designed to help you break into Investment Banking & Equity Research roles.",
+    description:
+      "A structured, end-to-end program designed to help you break into Investment Banking & Equity Research roles.",
     whatYouLearn: [
       "Advanced Financial Modeling (3-statement, DCF, comps)",
       "Equity Research report building",
@@ -155,7 +158,8 @@ const programDetails = [
   {
     id: "3",
     title: "Management Consulting & Strategy Associate Program",
-    description: "Designed to develop structured thinking, business problem-solving, and consulting frameworks.",
+    description:
+      "Designed to develop structured thinking, business problem-solving, and consulting frameworks.",
     whatYouLearn: [
       "Case solving frameworks (MECE, profitability, market entry)",
       "Business strategy & competitive analysis",
@@ -174,7 +178,8 @@ const programDetails = [
   {
     id: "4",
     title: "Corporate Finance & Treasury Masterclass",
-    description: "Focused on practical corporate finance and treasury operations used in real companies.",
+    description:
+      "Focused on practical corporate finance and treasury operations used in real companies.",
     whatYouLearn: [
       "Cash flow management & forecasting",
       "Working capital optimization",
@@ -191,7 +196,8 @@ const programDetails = [
   {
     id: "5",
     title: "Private Equity Associate Program",
-    description: "A practical, career-focused program designed to help learners understand how private equity investors evaluate businesses, structure transactions, assess returns, and create value post-investment. This program is ideal for students and finance aspirants who want to build a strong foundation in private equity, investment analysis, deal evaluation, and portfolio value creation.",
+    description:
+      "A practical, career-focused program designed to help learners understand how private equity investors evaluate businesses, structure transactions, assess returns, and create value post-investment. This program is ideal for students and finance aspirants who want to build a strong foundation in private equity, investment analysis, deal evaluation, and portfolio value creation.",
     whatYouLearn: [
       "Private equity ecosystem, fund structure, and investment lifecycle",
       "How PE firms source, screen, and evaluate investment opportunities",
@@ -215,8 +221,10 @@ const programDetails = [
   },
   {
     id: "6",
-    title: "Financial Planning & Wealth Management + Power BI Dashboard Program",
-    description: "A hands-on program designed to help learners transform raw financial and business data into interactive dashboards, clear visuals, and management-ready presentations using Power BI.",
+    title:
+      "Financial Planning & Wealth Management + Power BI Dashboard Program",
+    description:
+      "A hands-on program designed to help learners transform raw financial and business data into interactive dashboards, clear visuals, and management-ready presentations using Power BI.",
     whatYouLearn: [
       "Introduction to Power BI and dashboarding workflow",
       "Data cleaning, transformation, and structuring for reporting",
@@ -266,10 +274,34 @@ const courseFeatures = [
 
 const learnerReviews = [
   {
+    name: "Palak Gupta",
+    role: "MBA Finance, NMIMS, Mumbai",
+    text: "Before Ascendify, I understood theory but not practical valuation. The cohort helped me build confidence for finance interviews.",
+    rating: 5,
+  },
+  {
+    name: "Rahul Jain",
+    role: "MBA Finance | Pune",
+    text: "The program gave me a strong understanding of how financial decisions are actually taken in companies. From cash flow analysis to valuation and modeling, everything was taught in a very practical and application-based manner.",
+    rating: 5,
+  },
+  {
+    name: "Utkarsh Kejriwal",
+    role: "BCom & CA - St. Xavier's College, Kolkata",
+    text: "ASCENDIFY helped me move from a basic understanding of finance to actually thinking like an analyst. The mock interviews and structured approach made a huge difference in my confidence.",
+    rating: 5,
+  },
+  {
+    name: "Simran Modi",
+    role: "KPMG, Bangalore",
+    text: "Training and Workshops conducted by Ascendify are really enriching. It has really helped me to ascend my career journey. At Ascendify, I've learned practical valuation concepts so well like anything that boosted my job skill.",
+    rating: 5,
+  },
+  {
     name: "Himanshu Garg",
     role: "IIM Sirmaur, MBA Student",
-    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initaly planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
-    rating: 4.5,
+    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initially planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
+    rating: 5,
     image: "./HimanshuGarg.png",
   },
   {
@@ -279,7 +311,6 @@ const learnerReviews = [
     rating: 5,
     image: "./AaravAnand.png",
   },
-
 ];
 
 // --- Know More Modal ---
@@ -318,14 +349,16 @@ function KnowMoreModal({
             <h2 className="text-2xl font-bold leading-snug mb-2">
               {course.title}
             </h2>
-            <p className="text-white/80 text-sm">
-              ({course.subtitle})
-            </p>
+            <p className="text-white/80 text-sm">({course.subtitle})</p>
             {details && (
-              <p className="text-white/60 text-sm mt-2">{details.description}</p>
+              <p className="text-white/60 text-sm mt-2">
+                {details.description}
+              </p>
             )}
             <div className="mt-4 flex items-baseline gap-3">
-              <span className="text-lg text-white/50 line-through">₹{course.originalPrice}</span>
+              <span className="text-lg text-white/50 line-through">
+                ₹{course.originalPrice}
+              </span>
               <span className="text-3xl font-bold">₹{course.price}</span>
             </div>
             <div>
@@ -442,10 +475,12 @@ export default function CohortsPage() {
             Our <span className="text-cyan">Career Accelerator Programs</span>
           </h1>
           <p className="text-text-on-dark text-lg max-w-3xl mx-auto mb-4">
-            Structured, cohort-based programs designed by IB professionals to help you break into Investment Banking, Equity Research, and Strategic Finance roles.
+            Structured, cohort-based programs designed by IB professionals to
+            help you break into Investment Banking, Equity Research, and
+            Strategic Finance roles.
           </p>
-         
-          <div className="flex justify-center items-center gap-4 max-w-5xl mx-auto">
+
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 max-w-5xl mx-auto px-2">
             {[
               "Live interactive sessions",
               "Real company case studies",
@@ -454,7 +489,10 @@ export default function CohortsPage() {
               "Institution grade research",
               "Report writing",
             ].map((item, i) => (
-              <span key={i} className="px-4 py-2.5 rounded-full text-xs font-medium text-cyan bg-cyan/20 border border-cyan/30 whitespace-nowrap">
+              <span
+                key={i}
+                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-full text-[10px] sm:text-xs md:text-sm font-medium text-cyan bg-cyan/20 border border-cyan/30 text-center break-words"
+              >
                 {item}
               </span>
             ))}
@@ -494,12 +532,14 @@ export default function CohortsPage() {
                     <h3 className="font-bold text-lg leading-snug mb-2">
                       {course.title}
                     </h3>
-                    <p className="text-sm text-white/80">
-                      ({course.subtitle})
-                    </p>
+                    <p className="text-sm text-white/80">({course.subtitle})</p>
                     <div className="mt-4 flex items-baseline gap-3">
-                      <span className="text-base text-white/50 line-through">₹{course.originalPrice}</span>
-                      <span className="text-2xl font-bold">₹{course.price}</span>
+                      <span className="text-base text-white/50 line-through">
+                        ₹{course.originalPrice}
+                      </span>
+                      <span className="text-2xl font-bold">
+                        ₹{course.price}
+                      </span>
                     </div>
                     <p className="text-xs text-white/70 mt-1">
                       (Incl. all taxes)
@@ -527,7 +567,6 @@ export default function CohortsPage() {
           </div>
         </div>
       </section>
-
 
       {/* What Our Learners Say */}
       <section className="bg-light-bg py-10">
@@ -558,8 +597,8 @@ export default function CohortsPage() {
                         j < Math.floor(review.rating)
                           ? "fill-yellow-400 text-yellow-400"
                           : j < review.rating
-                          ? "fill-yellow-400/50 text-yellow-400"
-                          : "text-gray-200"
+                            ? "fill-yellow-400/50 text-yellow-400"
+                            : "text-gray-200"
                       }
                     />
                   ))}
@@ -568,7 +607,17 @@ export default function CohortsPage() {
                   {review.text}
                 </p>
                 <div className="flex items-center gap-3 border-t border-gray-100 pt-4">
-                  <img src={review.image} alt={review.name} className="w-10 h-10 rounded-full object-cover" />
+                  {review.image ? (
+                    <img
+                      src={review.image}
+                      alt={review.name}
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo to-cyan flex items-center justify-center text-white font-bold text-sm">
+                      {review.name.charAt(0)}
+                    </div>
+                  )}
                   <div>
                     <p className="font-semibold text-sm text-text-heading">
                       {review.name}

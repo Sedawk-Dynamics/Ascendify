@@ -11,6 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+   icons: {
+    icon: '/AscendifyLogo.png', // Reference from the public folder
+  },
   title: "Ascendify - Your Passport to a Dream Career",
   description:
     "Empowering future leaders through industry-led cohort programs, expert mentorship, and guaranteed career outcomes.",
