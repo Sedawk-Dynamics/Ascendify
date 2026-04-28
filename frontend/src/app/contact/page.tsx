@@ -2,7 +2,15 @@
 
 import { useState } from "react";
 import { PrimaryButton } from "@/components/Button";
-import { Mail, Phone, Headphones, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, Phone, Send, CheckCircle, AlertCircle } from "lucide-react";
+
+function LinkedinIcon({ size = 20, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
 
 const contactInfo = [
   {
@@ -17,12 +25,13 @@ const contactInfo = [
     detail: "+91 86970 09762",
     sub: "Mon-Sat, 9 AM - 7 PM",
   },
- 
+
   {
-    icon: Headphones,
-    title: "24/7 Hotline",
-    detail: "+91 12345 67890",
-    sub: "For enrolled students",
+    icon: LinkedinIcon,
+    title: "LinkedIn",
+    detail: "ASCENDIFY",
+    sub: "Follow us on LinkedIn",
+    href: "https://www.linkedin.com/company/ascendify-india/",
   },
 ];
 
@@ -191,27 +200,34 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div className="lg:col-span-2 space-y-5">
-              {contactInfo.map((info, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-xl p-6 shadow-sm flex items-start gap-4 hover:shadow-lg transition-shadow duration-300"
-                >
-                  <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center flex-shrink-0">
-                    <info.icon size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-text-heading">
-                      {info.title}
-                    </h3>
-                    <p className="text-text-heading text-sm font-medium mt-1">
-                      {info.detail}
-                    </p>
-                    <p className="text-text-muted-light text-xs mt-0.5">
-                      {info.sub}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              {contactInfo.map((info, i) => {
+                const Wrapper = info.href ? "a" : "div";
+                const wrapperProps = info.href
+                  ? { href: info.href, target: "_blank" as const, rel: "noopener noreferrer" }
+                  : {};
+                return (
+                  <Wrapper
+                    key={i}
+                    {...wrapperProps}
+                    className="bg-white rounded-xl p-6 shadow-sm flex items-start gap-4 hover:shadow-lg transition-shadow duration-300 block"
+                  >
+                    <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center flex-shrink-0">
+                      <info.icon size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-text-heading">
+                        {info.title}
+                      </h3>
+                      <p className="text-text-heading text-sm font-medium mt-1">
+                        {info.detail}
+                      </p>
+                      <p className="text-text-muted-light text-xs mt-0.5">
+                        {info.sub}
+                      </p>
+                    </div>
+                  </Wrapper>
+                );
+              })}
             </div>
           </div>
         </div>

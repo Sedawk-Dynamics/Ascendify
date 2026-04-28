@@ -131,6 +131,53 @@ async function main() {
   }
   console.log(`${certificates.length} certificates seeded.`);
 
+  // Create sample blog post
+  const existingBlogs = await prisma.blog.count();
+  if (existingBlogs === 0) {
+    await prisma.blog.create({
+      data: {
+        title: "Why Financial Modeling is a Must-Have Skill for MBA Students",
+        slug: "why-financial-modeling-is-must-have-skill-for-mba-students",
+        excerpt:
+          "Financial modeling is one of the most sought-after skills in the finance industry. Here's why every MBA student should master it before graduating.",
+        content: `## The Growing Demand for Financial Modeling
+
+In today's competitive finance landscape, theoretical knowledge alone isn't enough. Employers across investment banking, private equity, and corporate finance are actively seeking candidates who can build and interpret financial models.
+
+## What is Financial Modeling?
+
+Financial modeling is the process of creating a mathematical representation of a company's financial performance. It involves building spreadsheet models that forecast a company's future earnings, cash flows, and valuation based on historical data and assumptions.
+
+## Why MBA Students Need This Skill
+
+**1. Interview Readiness**
+Top finance recruiters expect candidates to demonstrate hands-on modeling skills during interviews. A well-built DCF or LBO model can set you apart from hundreds of applicants.
+
+**2. Practical Decision Making**
+Financial models are used daily in corporate finance for budgeting, forecasting, and strategic planning. Understanding how to build and interpret these models makes you immediately valuable to any team.
+
+**3. Higher Starting Salaries**
+Professionals with strong financial modeling skills command 20-30% higher starting salaries compared to their peers without these skills.
+
+**4. Career Flexibility**
+Whether you want to work in investment banking, consulting, venture capital, or corporate strategy, financial modeling is a transferable skill that opens doors across industries.
+
+## How Ascendify Helps
+
+At Ascendify, our Financial Modeling cohort is designed specifically for MBA students and early-career professionals. With live sessions led by industry practitioners, real-world case studies, and mock interview preparation, we ensure you're not just learning theory — you're building job-ready skills.
+
+**Ready to level up your finance career?** [Explore our upcoming cohorts](/cohorts) and take the first step toward mastering financial modeling.`,
+        author: "Ascendify Team",
+        category: "Finance Careers",
+        coverImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+        isPublished: true,
+      },
+    });
+    console.log("Sample blog post created.");
+  } else {
+    console.log(`Blogs already exist (${existingBlogs}), skipping.`);
+  }
+
   console.log("Seeding complete!");
 }
 

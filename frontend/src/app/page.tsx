@@ -67,10 +67,11 @@ const stats = [
 
 const testimonials = [
   {
-    name: "Palak Gupta",
-    role: "MBA Finance, NMIMS, Mumbai",
-    text: "Before Ascendify, I understood theory but not practical valuation. The cohort helped me build confidence for finance interviews.",
+    name: "Himanshu Garg",
+    role: "IIM Sirmaur, MBA Student",
+    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initially planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
     rating: 5,
+    image: "/HimanshuGarg.png",
   },
   {
     name: "Rahul Jain",
@@ -90,14 +91,13 @@ const testimonials = [
     role: "KPMG, Bangalore",
     text: "Training and Workshops conducted by Ascendify are really enriching. It has really helped me to ascend my career journey. At Ascendify, I've learned practical valuation concepts so well like anything that boosted my job skill.",
     rating: 5,
-    
+
   },
   {
-    name: "Himanshu Garg",
-    role: "IIM Sirmaur, MBA Student",
-    text: "I feel the course has done justice with what needed to be taught in financial modeling. In fact, the instructor went one step ahead to teach us advance charting as well even though it was not initially planned. All the sessions were very engaging and not like having a one way conversation which we see in other courses.",
+    name: "Palak Gupta",
+    role: "MBA Finance, NMIMS, Mumbai",
+    text: "Before Ascendify, I understood theory but not practical valuation. The cohort helped me build confidence for finance interviews.",
     rating: 5,
-    image: "/HimanshuGarg.png",
   },
 ];
 
@@ -577,14 +577,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-10 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-8">
-                <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
-                <span className="text-sm font-medium text-cyan">
-                  Admissions Open for 2026
-                </span>
-              </div>
-
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
                 Break into{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal-300">

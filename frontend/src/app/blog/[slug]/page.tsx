@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, User, Calendar, Tag, Loader2 } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 interface Blog {
   id: string;
@@ -65,12 +66,16 @@ export default function BlogPostPage() {
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan rounded-full blur-3xl" />
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-cyan text-sm font-medium mb-6 hover:underline">
-            <ArrowLeft size={16} /> Back to Blog
-          </Link>
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20 text-cyan mb-4">
-            {blog.category}
-          </span>
+          <div className="mb-6">
+            <Link href="/blog" className="inline-flex items-center gap-2 text-cyan text-sm font-medium hover:underline">
+              <ArrowLeft size={16} /> Back to Blog
+            </Link>
+          </div>
+          <div className="mb-4">
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20 text-cyan">
+              {blog.category}
+            </span>
+          </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
             {blog.title}
           </h1>
@@ -93,8 +98,8 @@ export default function BlogPostPage() {
       {/* Content */}
       <section className="bg-white py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none text-text-muted-alt leading-relaxed whitespace-pre-wrap">
-            {blog.content}
+          <div className="prose prose-lg max-w-none text-text-muted-alt leading-relaxed prose-headings:text-text-heading prose-strong:text-text-heading prose-a:text-indigo">
+            <ReactMarkdown>{blog.content}</ReactMarkdown>
           </div>
 
           <div className="mt-12 pt-8 border-t border-gray-200">
