@@ -187,7 +187,7 @@ export default function CorporatePage() {
             </div>
 
             {/* Stats cards */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {impactStats.map((stat, i) => (
                 <div
                   key={i}
@@ -303,7 +303,7 @@ export default function CorporatePage() {
                 leadership teams to ensure training outcomes align with business
                 goals.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {corporateBenefits.map((benefit, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full gradient-primary flex items-center justify-center shrink-0 mt-0.5">

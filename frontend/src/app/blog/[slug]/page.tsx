@@ -90,7 +90,7 @@ export default function BlogPostPage() {
       {blog.coverImage && (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
           <div className="rounded-2xl overflow-hidden shadow-xl">
-            <img src={blog.coverImage} alt={blog.title} className="w-full h-[400px] object-cover" />
+            <img src={blog.coverImage} alt={blog.title} className="w-full h-[200px] sm:h-[300px] lg:h-[400px] object-cover" />
           </div>
         </div>
       )}

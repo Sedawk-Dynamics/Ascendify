@@ -105,8 +105,8 @@ export default function VerifyPage() {
       {/* Verification Card */}
       <section className="bg-light-bg py-20">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-8 shadow-sm">
-            <form onSubmit={handleVerify} className="flex gap-3">
+          <div className="bg-white rounded-xl p-5 sm:p-8 shadow-sm">
+            <form onSubmit={handleVerify} className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
                 <Search
                   size={18}
@@ -121,7 +121,7 @@ export default function VerifyPage() {
                   required
                 />
               </div>
-              <PrimaryButton type="submit" disabled={status === "loading"}>
+              <PrimaryButton type="submit" disabled={status === "loading"} className="w-full sm:w-auto">
                 {status === "loading" ? (
                   <Loader2 size={18} className="animate-spin" />
                 ) : (

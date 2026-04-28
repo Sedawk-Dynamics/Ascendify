@@ -121,7 +121,7 @@ function Chatbot({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="fixed bottom-[200px] right-6 z-[60] w-[380px] bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.15)] border border-gray-100 flex flex-col overflow-hidden animate-[slideUp_0.3s_ease-out]">
+    <div className="fixed bottom-[200px] right-4 sm:right-6 z-[60] w-[calc(100vw-2rem)] sm:w-[380px] max-h-[calc(100vh-220px)] bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.15)] border border-gray-100 flex flex-col overflow-hidden animate-[slideUp_0.3s_ease-out]">
       {/* Header */}
       <div className="relative overflow-hidden shrink-0">
         <div className="absolute inset-0 gradient-hero" />

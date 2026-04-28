@@ -67,6 +67,15 @@ body {
   animation: fade-up 0.6s ease-out forwards;
 }
 
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

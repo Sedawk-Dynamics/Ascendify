@@ -125,7 +125,7 @@ export default function HireFromUsPage() {
               {alumniCompanies.map((company, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-xl px-8 py-4 shadow-sm border border-gray-100 text-gray-500 font-bold text-lg tracking-wider"
+                  className="bg-white rounded-xl px-4 sm:px-8 py-3 sm:py-4 shadow-sm border border-gray-100 text-gray-500 font-bold text-sm sm:text-lg tracking-wider"
                 >
                   {company}
                 </div>

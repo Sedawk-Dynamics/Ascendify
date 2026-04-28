@@ -70,8 +70,8 @@ export default function JobBoardPage() {
       <section className="bg-light-bg py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Search & Filter Bar */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <div className="relative flex-1">
+          <div className="space-y-4 mb-10">
+            <div className="relative">
               <Search
                 size={18}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
@@ -84,14 +84,14 @@ export default function JobBoardPage() {
                 className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo/30 focus:border-indigo text-sm bg-white"
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 overflow-x-auto no-scrollbar">
               {jobTypes.map((type) => (
                 <button
                   key={type}
                   onClick={() => setFilter(type)}
-                  className={`px-5 py-3 rounded-lg text-sm font-medium transition-all cursor-pointer ${
+                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                     filter === type
-                      ? "gradient-primary text-white"
+                      ? "gradient-primary text-white shadow-md"
                       : "bg-white border border-gray-200 text-text-muted hover:border-indigo"
                   }`}
                 >
