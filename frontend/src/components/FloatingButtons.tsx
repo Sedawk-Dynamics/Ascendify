@@ -19,25 +19,57 @@ const quickReplies = [
 function getBotReply(msg: string): string {
   const lower = msg.toLowerCase();
 
-  if (lower.includes("course") || lower.includes("program") || lower.includes("offer")) {
+  if (
+    lower.includes("course") ||
+    lower.includes("program") ||
+    lower.includes("offer")
+  ) {
     return "We offer industry-led live cohorts in:\n\n• Certified Financial Modeling & Business Valuations\n• Investment Banking & Equity Research\n• Management Consulting & Strategy\n• Corporate Finance & M&A\n• CFA Level 1 Preparation\n• Financial Planning & Wealth Management\n\nWould you like to know more about any specific course?";
   }
-  if (lower.includes("price") || lower.includes("cost") || lower.includes("fee") || lower.includes("how much")) {
+  if (
+    lower.includes("price") ||
+    lower.includes("cost") ||
+    lower.includes("fee") ||
+    lower.includes("how much")
+  ) {
     return "Our courses range from ₹14,999 to ₹24,999 (incl. all taxes). Each course includes live project-based learning, mentorship, and certification.\n\nWould you like details on a specific course?";
   }
-  if (lower.includes("enroll") || lower.includes("join") || lower.includes("register") || lower.includes("sign up")) {
+  if (
+    lower.includes("enroll") ||
+    lower.includes("join") ||
+    lower.includes("register") ||
+    lower.includes("sign up")
+  ) {
     return "You can enroll in 2 easy steps:\n\n1. Visit our Courses page and click 'Pay & Enroll'\n2. Complete the payment via Razorpay\n\nOr click 'Talk to a counsellor' and we'll guide you personally!";
   }
-  if (lower.includes("counsellor") || lower.includes("talk") || lower.includes("contact") || lower.includes("call")) {
+  if (
+    lower.includes("counsellor") ||
+    lower.includes("talk") ||
+    lower.includes("contact") ||
+    lower.includes("call")
+  ) {
     return "You can reach our team at:\n\n📧 Email: info@ascendify.in\n📞 WhatsApp: Click the green button below\n\nOr fill out the 'Talk with our team' form on our homepage and we'll get back to you within 24 hours!";
   }
-  if (lower.includes("placement") || lower.includes("job") || lower.includes("career")) {
+  if (
+    lower.includes("placement") ||
+    lower.includes("job") ||
+    lower.includes("career")
+  ) {
     return "We have a 95% placement rate! Our students are placed at top firms. We provide:\n\n• Interview-focused training\n• Resume & portfolio building\n• Corporate connect partnerships\n• Placement assistance with 35+ hiring partners";
   }
-  if (lower.includes("duration") || lower.includes("long") || lower.includes("month") || lower.includes("week")) {
+  if (
+    lower.includes("duration") ||
+    lower.includes("long") ||
+    lower.includes("month") ||
+    lower.includes("week")
+  ) {
     return "Our courses range from 3 to 6 months of live project-based learning. Most popular courses are 3-4 months long with weekend & evening batches available.";
   }
-  if (lower.includes("hello") || lower.includes("hi") || lower.includes("hey")) {
+  if (
+    lower.includes("hello") ||
+    lower.includes("hi") ||
+    lower.includes("hey")
+  ) {
     return "Hello! Welcome to Ascendify. I'm here to help you with information about our finance & consulting courses. What would you like to know?";
   }
   if (lower.includes("thank")) {
@@ -241,11 +273,11 @@ export default function FloatingButtons() {
         {/* Logo2 */}
         <div className="hover:scale-105 transition-all duration-300 cursor-pointer">
           <Image
-            src="/logo2.png"
+            src="/logo2.jpg"
             alt="BGTFS"
             width={66}
             height={38}
-            className="object-contain w-auto h-auto"
+            className="object-contain w-auto h-auto rounded-[3px]"
           />
         </div>
       </div>
