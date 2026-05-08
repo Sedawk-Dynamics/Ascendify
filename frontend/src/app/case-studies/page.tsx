@@ -1,4 +1,18 @@
+import type { Metadata } from "next";
 import { Clock, BookOpen } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Case Studies",
+  description:
+    "Discover real-world success stories of how Ascendify has helped individuals and organizations achieve measurable career outcomes in finance.",
+  alternates: { canonical: "https://ascendify.in/case-studies" },
+  openGraph: {
+    title: "Case Studies - Ascendify Success Stories",
+    description:
+      "Discover how Ascendify has helped individuals and organizations achieve measurable outcomes.",
+    url: "https://ascendify.in/case-studies",
+  },
+};
 
 export default function CaseStudiesPage() {
   return (

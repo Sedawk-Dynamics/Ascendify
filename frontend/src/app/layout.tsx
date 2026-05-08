@@ -11,12 +11,91 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-   icons: {
-    icon: '/AscendifyLogo.png', // Reference from the public folder
+  metadataBase: new URL("https://ascendify.in"),
+  icons: {
+    icon: "/AscendifyLogo.png",
   },
-  title: "Ascendify - Your Passport to a Dream Career",
+  title: {
+    default: "Ascendify - Your Passport to a Dream Career",
+    template: "%s | Ascendify",
+  },
   description:
-    "Empowering future leaders through industry-led cohort programs, expert mentorship, and guaranteed career outcomes.",
+    "Empowering future leaders through industry-led cohort programs, expert mentorship, and guaranteed career outcomes in Investment Banking, Equity Research & Corporate Finance.",
+  keywords: [
+    "finance career",
+    "investment banking course",
+    "financial modeling",
+    "equity research",
+    "corporate finance",
+    "MBA finance",
+    "cohort programs",
+    "finance mentorship",
+    "valuation course",
+    "DCF modeling",
+    "finance interview prep",
+    "Ascendify",
+  ],
+  authors: [{ name: "Ascendify" }],
+  creator: "Ascendify",
+  publisher: "Ascendify",
+  alternates: {
+    canonical: "https://ascendify.in",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://ascendify.in",
+    siteName: "Ascendify",
+    title: "Ascendify - Your Passport to a Dream Career",
+    description:
+      "Empowering future leaders through industry-led cohort programs, expert mentorship, and guaranteed career outcomes.",
+    images: [
+      {
+        url: "/AscendifyLogo.png",
+        width: 1200,
+        height: 630,
+        alt: "Ascendify - Finance Career Platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ascendify - Your Passport to a Dream Career",
+    description:
+      "Empowering future leaders through industry-led cohort programs, expert mentorship, and guaranteed career outcomes.",
+    images: ["/AscendifyLogo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+// JSON-LD Structured Data
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "Ascendify",
+  url: "https://ascendify.in",
+  logo: "https://ascendify.in/AscendifyLogo.png",
+  description:
+    "Empowering future leaders through industry-led cohort programs, expert mentorship, and guaranteed career outcomes in finance.",
+  email: "info@ascendify.in",
+  telephone: "+91-86970-09762",
+  sameAs: [
+    "https://www.linkedin.com/company/ascendifyy",
+  ],
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +105,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col font-sans">
         <Navbar />
         <main className="flex-1 pt-18">{children}</main>

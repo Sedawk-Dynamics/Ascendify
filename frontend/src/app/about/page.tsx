@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Lightbulb,
   Target,
@@ -7,6 +8,19 @@ import {
   Rocket,
   CheckCircle2,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Ascendify's mission to bridge the gap between education and real finance careers through industry-led cohort programs and expert mentorship.",
+  alternates: { canonical: "https://ascendify.in/about" },
+  openGraph: {
+    title: "About Ascendify - Bridging Education & Finance Careers",
+    description:
+      "ASCENDIFY is built to solve one problem — why talented students struggle to break into Investment Banking, Equity Research, and core finance roles.",
+    url: "https://ascendify.in/about",
+  },
+};
 
 const values = [
   {
