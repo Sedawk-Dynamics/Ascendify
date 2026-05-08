@@ -316,6 +316,7 @@ function ContactFormModal({
     setSubmitting(true);
     try {
       const messageParts = [
+        formData.contact && `Contact Number: ${formData.contact}`,
         formData.graduationYear && `Graduation Year: ${formData.graduationYear}`,
         formData.workExperience && `Work Experience: ${formData.workExperience}`,
         formData.highestAcademic && `Highest Academic: ${formData.highestAcademic}`,
