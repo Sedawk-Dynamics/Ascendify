@@ -315,10 +315,25 @@ function ContactFormModal({
     e.preventDefault();
     setSubmitting(true);
     try {
+      const messageParts = [
+        formData.graduationYear && `Graduation Year: ${formData.graduationYear}`,
+        formData.workExperience && `Work Experience: ${formData.workExperience}`,
+        formData.highestAcademic && `Highest Academic: ${formData.highestAcademic}`,
+        formData.interestedToEnroll && `Interested to Enroll: ${formData.interestedToEnroll}`,
+        formData.willingFinanceCareer && `Willing for Finance Career: ${formData.willingFinanceCareer}`,
+        formData.studentOrProfessional && `Student/Professional: ${formData.studentOrProfessional}`,
+      ].filter(Boolean).join("\n");
+
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.whatsapp || formData.contact,
+          city: formData.state || "Not specified",
+          message: messageParts || "Enrollment inquiry from homepage",
+        }),
       });
       setSubmitted(true);
     } catch {
