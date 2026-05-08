@@ -315,16 +315,6 @@ function ContactFormModal({
     e.preventDefault();
     setSubmitting(true);
     try {
-      const messageParts = [
-        formData.contact && `Contact Number: ${formData.contact}`,
-        formData.graduationYear && `Graduation Year: ${formData.graduationYear}`,
-        formData.workExperience && `Work Experience: ${formData.workExperience}`,
-        formData.highestAcademic && `Highest Academic: ${formData.highestAcademic}`,
-        formData.interestedToEnroll && `Interested to Enroll: ${formData.interestedToEnroll}`,
-        formData.willingFinanceCareer && `Willing for Finance Career: ${formData.willingFinanceCareer}`,
-        formData.studentOrProfessional && `Student/Professional: ${formData.studentOrProfessional}`,
-      ].filter(Boolean).join("\n");
-
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -333,7 +323,16 @@ function ContactFormModal({
           email: formData.email,
           phone: formData.whatsapp || formData.contact,
           city: formData.state || "Not specified",
-          message: messageParts || "Enrollment inquiry from homepage",
+          message: "Enrollment inquiry",
+          whatsapp: formData.whatsapp,
+          contact: formData.contact,
+          state: formData.state,
+          graduationYear: formData.graduationYear,
+          workExperience: formData.workExperience,
+          highestAcademic: formData.highestAcademic,
+          interestedToEnroll: formData.interestedToEnroll,
+          willingFinanceCareer: formData.willingFinanceCareer,
+          studentOrProfessional: formData.studentOrProfessional,
         }),
       });
       setSubmitted(true);
