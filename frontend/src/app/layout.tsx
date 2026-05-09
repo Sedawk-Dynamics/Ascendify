@@ -12,6 +12,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ascendify.in"),
+  verification: {
+    google: "UZ4v9K87Ym4kwOYJzQBCtII_yzz9IvV-2ucZmLzyUDo",
+  },
   icons: {
     icon: "/AscendifyLogo.png",
   },
