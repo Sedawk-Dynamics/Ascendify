@@ -66,8 +66,8 @@ const courses = [
     id: "4",
     title: "Corporate Finance & Treasury Masterclass",
     subtitle: "8 weeks of live project based  learning",
-    originalPrice: "10,000",
-    price: "7,000",
+    originalPrice: "15,000",
+    price: "12,000",
     features: [
       "Capital budgeting & financial planning",
       "Mergers & acquisitions deal structuring",
